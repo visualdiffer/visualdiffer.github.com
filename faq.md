@@ -1,3 +1,9 @@
+---
+permalink: faq.html
+layout: default
+title: Frequently Asked Questions
+---
+
 Finder integration
 ==================
 
@@ -10,11 +16,11 @@ Download the script from [github](https://github.com/visualdiffer/scripts/downlo
 How to use it is described [here](https://github.com/visualdiffer/scripts)
 
 Use as External Diff Tool
--------------------------
+=========================
 
 VisualDiffer can be integrated with many applications thanks to the command line utility [[Unix Shell Scripting Support|visdiff]]
 
-[SourceTree](http://www.sourcetreeapp.com/ SourceTree)
+[SourceTree](http://www.sourcetreeapp.com/)
 ------------------------------------------------------
 
 - Set 'Visual Diff Tool' to: 'Other'
@@ -22,7 +28,7 @@ VisualDiffer can be integrated with many applications thanks to the command line
 - Set Arguments to: $LOCAL $REMOTE
 
 VisualDiffer always prompts for a file open panel, why?
--------------------------------------------------------
+=======================================================
 
 Starting from version 1.4.2 VisualDiffer totally agree with 
 [Apple sandboxing](http://developer.apple.com/library/mac/#documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html) rules and this introduced a different way to access to file system.
@@ -36,7 +42,7 @@ Integration with other applications
 If VisualDiffer is used as external diff tool you should need to add manually paths as trusted, this is documented on [Trusted Paths](trustedPaths)
 
 Customize the file date/time format in Folder Differ View
----------------------------------------------------------
+=========================================================
 <span style="color:red">Since version 1.4.4 or above</span>
 
 By default the Folder Differ View shows for files and folders a long format containing also seconds, actually this value can't be changed from user interface but you can set it from terminal.
