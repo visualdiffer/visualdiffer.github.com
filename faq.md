@@ -19,7 +19,7 @@ How to use it is described [here](https://github.com/visualdiffer/scripts)
 Use as External Diff Tool
 =========================
 
-VisualDiffer can be integrated with many applications thanks to the command line utility [visdiff](/unix_shell_support/)
+VisualDiffer can be integrated with many applications thanks to the command line utility [visdiff](unix_shell_support.html)
 
 [SourceTree](http://www.sourcetreeapp.com/)
 ------------------------------------------------------
@@ -40,7 +40,7 @@ Saved vdiff sessions needs to be aware of sandbox so the first time you open the
 
 Integration with other applications
 -----------------------------------
-If VisualDiffer is used as external diff tool you should need to add manually paths as trusted, this is documented on [Trusted Paths](trustedPaths)
+If VisualDiffer is used as external diff tool you should need to add manually paths as trusted, this is documented on [Trusted Paths](trustedPaths.html)
 
 Customize the file date/time format in Folder Differ View
 =========================================================
