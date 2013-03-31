@@ -311,10 +311,12 @@ Full-Width Styles
   font-size: 42px;
   font-weight: 700;
   text-shadow: #111 0px 0px 10px;
+  background: url("/images/logo.png") no-repeat scroll 0 0 transparent;
 }
 
 #project_title > a {
-  color: #FFF
+  color: #FFF;
+  margin-left: 70px;
 }
 
 #project_tagline {

@@ -23,7 +23,7 @@ For example
 	visdiff ~/original.txt ~/modified.txt --wait
 
 Creating a symbolic link
-========================
+------------------------
 
 VisualDiffer.app doesn't install the Terminal application but manually it is possible to create the link to the shell command.
 

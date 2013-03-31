@@ -2,6 +2,7 @@
 permalink: index.html
 layout: default
 title: VisualDiffer Wiki Main Page
+noToc: true
 ---
 
 Table of Contents

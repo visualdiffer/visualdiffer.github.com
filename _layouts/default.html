@@ -8,6 +8,19 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/vd.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/toc.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="javascripts/jquery.cookie.js"></script>
+    <script src="javascripts/jquery.toc.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+          {% unless page.noToc %}
+          $('#main_content').toc();
+          {% endunless %}
+        });
+  </script>            
 
     <title>VisualDiffer - {{ page.title }}</title>
   </head>
