@@ -9,6 +9,7 @@ Table of Contents
 =================
 
 * [Folder Colors Legend](foldersLegend.html)
+* [File Colors Legend](fileLegend.html)
 * [Unix Shell Scripting Support](unix_shell_support.html)
 * [Frequently Asked Questions](faq.html)
 * [Trusted Paths](trustedPaths.html)
