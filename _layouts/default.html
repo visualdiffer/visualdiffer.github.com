@@ -13,20 +13,18 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/vd.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/toc.css">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="javascripts/jquery.cookie.js"></script>
-    <script src="javascripts/jquery.toc.js"></script>
-
-    <script type="text/javascript">
-        $(function() {
-          {% unless page.noToc %}
-            $('#main_content').toc();
-          {% endunless %}
-        });
-  </script>            
+    <script src="javascripts/jquery.tocLight.js"></script>
 
     <title>VisualDiffer - {{ page.title }}</title>
-  </head>
+
+    <script type="text/javascript">
+      $(function() {
+        $.toc.clickHideButton({saveShowStatus:true});
+      });
+    </script>
+</head>
 
   <body>
 
@@ -42,7 +40,7 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-{{ content }}
+        {{ content | toc_generate }}
       </section>
     </div>
 
