@@ -10,15 +10,16 @@ Table of Contents
 
 * [Folder Colors Legend](foldersLegend.html)
 * [File Colors Legend](fileLegend.html)
-* [Unix Shell Scripting Support](unix_shell_support.html)
-* [Frequently Asked Questions](faq.html)
-* [Integrate with OSX Finder context menu](https://github.com/visualdiffer/scripts)
-
-Application Features
---------------------
-
 * [Comparison Methods](comparisonMethods.html)
 * [Trusted Paths](trustedPaths.html)
+
+Extra Features
+==============
+
+* [Unix Shell Scripting Support](unixshell.html)
+* [Frequently Asked Questions](faq.html)
+* [Integrate with OSX Finder context menu](finder.html)
+
 
 Other sites
 ===========

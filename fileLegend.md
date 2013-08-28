@@ -1,11 +1,14 @@
 ---
 permalink: fileLegend.html
 layout: default
+
+# mainAnchor is used by Apple links
+mainAnchor: fileLegend
 title: File Colors Legend
+subtitle: Colors used in File Differ View
 ---
 
 Lines colors in the File Differ View are based on differences found
-===========================================================
 
 <table class="bordered file-legend">
 <tr>

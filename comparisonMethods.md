@@ -1,11 +1,12 @@
 ---
 permalink: comparisonMethods.html
 layout: default
+
+# mainAnchor is used by Apple links
+mainAnchor: comparisonMethod
 title: Comparison method
+subtitle: Choose the method to compare folders and how to handle special files and metadata
 ---
-
-Choose the method to compare folders and how to handle special files and metadata
-
 
 # Comparison method
 

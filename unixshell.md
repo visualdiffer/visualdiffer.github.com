@@ -1,7 +1,11 @@
 ---
-permalink: unix_shell_support.html
+permalink: unixshell.html
 layout: default
+
+# mainAnchor is used by Apple links
+mainAnchor: unixShell
 title: Unix Shell Scripting Support
+subtitle: Launching the UI from the Unix command line
 ---
 
 Using visdiff
@@ -25,7 +29,7 @@ For example
 Creating a symbolic link
 ------------------------
 
-VisualDiffer.app doesn't install the Terminal application but manually it is possible to create the link to the shell command.
+VisualDiffer.app doesn't install the terminal application but manually it is possible to create the link to the shell command.
 
 It requires root access, from a terminal prompt type the command shown below
 

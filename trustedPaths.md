@@ -1,13 +1,17 @@
 ---
 permalink: trustedPaths.html
 layout: default
+
+# mainAnchor is used by Apple links
+mainAnchor: trustedPaths
 title: Trusted Paths
+subtitle: How to handle paths with Apple sandbox
 ---
 
 Why we need trusted paths
 =========================
 
-Starting from OSX Lion applications run in the so called sandbox that is an isolated and secure environment.  
+Starting from OSX Lion applications run in the so called [sandbox](http://developer.apple.com/library/mac/#documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html) that is an isolated and secure environment.  
 Applications accessing to file system (reading file, listing a folder) need explicitly that user gives permission to application.  
 User gives his permission to access to a file (or folder) selecting it from a file panel or dragging path to application.  
 VisualDiffer prompts a file panel when it can't access to a file due to permission error, after user selection the path is stored as trusted so next time it isn't necessary to re-prompt.

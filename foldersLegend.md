@@ -1,11 +1,14 @@
 ---
 permalink: foldersLegend.html
 layout: default
+
+# mainAnchor is used by Apple links
+mainAnchor: foldersLegend
 title: Folder Colors Legend
+subtitle: Folders icons assume colors based on their content or filter status
 ---
 
-Folder icons assume different colors based on their content
-===========================================================
+Folders are shown using different colors to quickly visualize the files comparison results
 
 <table class="bordered folder-legend">
 <tr>
