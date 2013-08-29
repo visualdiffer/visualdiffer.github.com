@@ -12,6 +12,7 @@ Table of Contents
 * [File Colors Legend](fileLegend.html)
 * [Comparison Methods](comparisonMethods.html)
 * [Trusted Paths](trustedPaths.html)
+* [Alignment Rules](alignRules.html)
 
 Extra Features
 ==============

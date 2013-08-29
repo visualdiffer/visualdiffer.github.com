@@ -1,3 +1,6 @@
 markdown: rdiscount
 pygments: true
-showToggleButton: true
+
+# Needed only when generate Apple Help
+showToggleButton: false
+prefixDir: ../../common/

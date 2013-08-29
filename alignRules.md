@@ -70,4 +70,107 @@ If the last scenario is true, the alignment will try to be smart, first it searc
 
 # Align by user defined rules (not available on OSX 10.6 Snow Leopard)
 
+There are scenarios where it is necessary to align files having different names.
+
+The most simple scenario has files with same name but different extension as shown below
+
+<table class="bordered">
+<tr>
+<th>Left</th>
+<th>Right</th>
+</tr>
+<tr>
+<td>001.jpg</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>001.raw</td>
+</tr>
+<tr>
+<td>002.jpg</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>002.RAW</td>
+</tr>
+</table>
+
+Suppose you want to align ignoring the file extension to produce the result shown below
+
+<table class="bordered">
+<tr>
+<th>Left</th>
+<th>Right</th>
+</tr>
+<tr>
+<td>001.jpg</td>
+<td>001.raw</td>
+</tr>
+<td>002.jpg</td>
+<td>002.RAW</td>
+</tr>
+</table>
+
+This can be achieved using VisualDiffer 'user defined alignment rules'.
+
+## Managing alignment rules
+
+You can create, edit or delte rules from Session Preferences Dialog
+
+![image]({{ site.prefixDir }}images/screenshots/sessionPrefAlignment.png)
+
+More rules can be assigned to a VisualDiffer session comparison, they are evaluated from top to bottom.
+
+## Creating a rule
+
+When you add a new rule (or edit an existing one) you access to the dialog shown below
+
+![image]({{ site.prefixDir }}images/screenshots/alignRule.png) 
+
+A rule has
+
+- a left **regular** expression
+- a right **pattern** expression
+
+_If you are not familiar with regular expressions please refer to [ICU](http://userguide.icu-project.org/strings/regexp) documentation._
+
+## Left regular expression
+
+The left regexp is used to match a filename on the left side of VisualDiffer Folder View, we want to find all jpg files so we create a group `(.*)` followed by `.jpg` extension.
+
+## Right pattern expression
+
+Notice the right expression **isn't** a regular expression, it should contain some special patterns used to access to regular expression groups (if any).
+
+The right expression is used to match a file name on right side of VisualDiffer Folder View, we want to match `.raw` files having the **same name** of file on left side.  
+So we use the `$1` to get the first group present on regexp (in this example there is only one group but you can have nine groups).
+
+Now if you save the rule and then run the comparison you obtain the result shown below
+
+<table class="bordered">
+<tr>
+<th>Left</th>
+<th>Right</th>
+</tr>
+<tr>
+<td>001.jpg</td>
+<td>001.raw</td>
+</tr>
+<tr>
+<td>002.jpg</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>002.RAW</td>
+</tr>
+</table>
+
+But `002.jpg` and `002.RAW` files are not aligned because `002.RAW` extension is uppercase, this can be easily fixed ignoring the case on right expression as shown in figure shown below
+
+![image]({{ site.prefixDir }}images/screenshots/alignRuleIgnoreCase.png)
+
+## Test Rule
 TODO

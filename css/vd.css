@@ -16,12 +16,12 @@ img.folder-legend {
 }
 
 #main_content a[href ^="https://"], .link-https {
-	background: url('/images/lock-icon.png') center right no-repeat;
+	background: url('../images/lock-icon.png') center right no-repeat;
 	padding-right: 16px;
 }
 
 #main_content a[href ^="http://"], .link-external {
-	background: url('/images/external-icon.png') center right no-repeat;
+	background: url('../images/external-icon.png') center right no-repeat;
 	padding-right: 16px;
 }
 
