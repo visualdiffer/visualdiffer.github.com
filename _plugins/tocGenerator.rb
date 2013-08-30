@@ -47,8 +47,7 @@ module Jekyll
             h2s.map.each do |h2|
                 inner_section += 1;
                 anchor_id = anchor_prefix + toc_level.to_s + '-' + toc_section.to_s + '-' + inner_section.to_s
-                # Insert before element the anchor used by TOC
-                h2.before("<a name=\"#{anchor_id}\"></a>")
+                h2['id'] = "#{anchor_id}"
 
                 level_html += create_level_html(anchor_id,
                     toc_level + 1,
@@ -61,8 +60,7 @@ module Jekyll
                 level_html = '<ul>' + level_html + '</ul>';
             end
             anchor_id = anchor_prefix + toc_level.to_s + '-' + toc_section.to_s;
-            # Insert before element the anchor used by TOC
-            h1.before("<a name=\"#{anchor_id}\"></a>")
+            h1['id'] = "#{anchor_id}"
 
             toc_html += create_level_html(anchor_id,
                 toc_level,
