@@ -1,6 +1,9 @@
 ---
 permalink: faq.html
 layout: default
+
+# mainAnchor is used by Apple links
+mainAnchor: faq
 title: Frequently Asked Questions
 ---
 
