@@ -303,6 +303,7 @@ Full-Width Styles
   font-weight: 700;
   text-shadow: #111 0px 0px 10px;
   background: url("../images/logo.png") no-repeat scroll 0 0 transparent;
+  background-size: 64px 64px;
 }
 
 #project_title > a {
@@ -371,6 +372,45 @@ acronym {
   border-radius: 5px;
   color: #007EDF;
   padding: 1px;
+}
+
+/*******************************************************************************
+* Topics using in Apple Help index page
+*******************************************************************************/
+
+.topics-logo {
+    text-align: center;
+    float: left;
+    margin-right: 40px;
+}
+
+.topics-container {
+    margin: 30px auto 50px;
+    width: 450px;
+}
+
+.topics {
+    border-left: 1px solid silver;
+    float: left;
+    padding-left: 10px;
+    width: 250px;
+}
+
+.topics-list {
+    list-style-type: none;
+}
+
+.topics-appname {
+    color: #475461;
+    background-color: #F9F9F9;
+    border: 1px solid #BFBFBF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 /*******************************************************************************
