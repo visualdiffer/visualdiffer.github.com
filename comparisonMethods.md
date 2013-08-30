@@ -77,12 +77,10 @@ The complete list of supported metadata
 <td>Compare all labels assigned to a file</td>
 </tr>
 <tr>
-<tr>
 <td>Tags
 <br/><strong>Available in OSX 10.9 or above</strong></td>
 <td>Compare all tags assigned to a file</td>
 </tr>
-<tr>
 </table>
 
 
@@ -100,12 +98,10 @@ User can choose to not traverse special files like symbolic links and packages
 <td>If checked the symbolic links will be traversed</td>
 </tr>
 <tr>
-<tr>
 <td>Skip Packages</td>
 <td>If checked special OSX files (so called bundle or packages)
 <br/>like Applications and Frameworks will not be traversed</td>
 </tr>
-<tr>
 </table>
 
 
@@ -130,30 +126,26 @@ The complete list of show options
 <tr>
 <th>Choice</th>
 <th>Description</th>
+</tr>
 <tr>
 <td>Show All</td>
 <td>No matters which comaprison result, show files</td>
 </tr>
 <tr>
-<tr>
 <td>Only Mismatches</td>
 <td>Show only files with some mismatch (size, timestamp or content)</td>
 </tr>
-<tr>
 <tr>
 <td>Only Matches</td>
 <td>Show only identical files</td>
 </tr>
 <tr>
-<tr>
 <td>No Orphans</td>
 <td>Show files present both on left and right side</td>
 </tr>
 <tr>
-<tr>
 <td>Only Orphans</td>
 <td>Show files present only on left or only on right</td>
 </tr>
-<tr>
 </table>
 
