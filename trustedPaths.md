@@ -25,7 +25,7 @@ Applications like Dreamweaver save to temporary file the remote version and then
 
 This behaviour generates a very frustrating user experience because the user must select the file from the panel again and again.
 
-Use trusted paths
+Use Trusted Paths
 =================
 
 Trusted paths resolve this problem, applications save files always on their own specific temporary folders, for example SourceTree can generate the following path
@@ -38,7 +38,7 @@ We can trust **/var/folders** that is the root used by SourceTree to saves tempo
 
 Trusting **/var/folders** ensures every path generated inside it (at any deeper subfolder level) doesn't require any additional user permission and the file panel prompts no longer appears
 
-Where configure trusted paths
+Where configure Trusted Paths
 =============================
 
 You can add and removed trusted paths from VisualDiffer Preference panel

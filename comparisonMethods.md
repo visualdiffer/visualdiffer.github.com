@@ -4,11 +4,11 @@ layout: default
 
 # mainAnchor is used by Apple links
 mainAnchor: comparisonMethod
-title: Comparison method
-subtitle: Choose the method to compare folders and how to handle special files and metadata
+title: Comparison Method
+subtitle: The folders comparison method, special files and metadata
 ---
 
-# Comparison method
+# Comparison Method
 
 It is possible to choose which method to use to compare two folders.  
 The method to use is strictly related to user needs, comparing source code (files large only few kilobytes) should use a content comparison but to find which movies (files larger than a gigabytes) are not present on right side is faster compare by file size or file timestamp.
@@ -59,7 +59,7 @@ The complete list of supported comparison methods
 </table>
 
 
-# Compare Finder metadata
+# Compare Finder Metadata
 
 It is possible to compare OSX Finder Metadata.
 
@@ -84,7 +84,7 @@ The complete list of supported metadata
 </table>
 
 
-# Special files handling
+# Special Files Handling
 
 User can choose to not traverse special files like symbolic links and packages
 
@@ -105,7 +105,7 @@ User can choose to not traverse special files like symbolic links and packages
 </table>
 
 
-# Timestamp tolerance
+# Timestamp Tolerance
 
 The timestamp comparison considers two files matching when the time (including the seconds) is identical but sometime it would be useful to have a range of tolerance for example when the difference is between 5 seconds.
 
@@ -114,9 +114,9 @@ You can set this tolerance entering a positive integer number into the text fiel
 Ignore differences of X seconds or less 
 
 
-# File to show
+# Choose Files to View according to differences found
 
-After the comparison complete you can determine which files to show
+After the comparison complete you can choose which files to view
 
 Definition: **Orphan** indicates a file present only on one side
 

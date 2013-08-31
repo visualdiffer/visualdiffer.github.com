@@ -70,10 +70,10 @@ Pay attention to not add extra characters, the following paths will never found
 <strong>project_1/src/</strong>&nbsp;&nbsp;&nbsp;invalid, trailing slash  
 
 
-# File size Filters
+# File Size Filters
 
 It is possible to specify files (not folders) to exclude based on their size expressed in bytes, KB, MB and GB
 
-# File modification date Filters
+# File Modification Date Filters
 
 It is possible to specify files (not folders) to exclude based on their last modification date and time
