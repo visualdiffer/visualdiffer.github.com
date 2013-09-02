@@ -1,0 +1,122 @@
+
+/* MENU ------------------------------------------------------------*/
+
+#menu{
+  width: 100%;
+  padding-top: 1px;
+  margin-bottom: 0px;
+  background: #f858ef; 
+  background: -webkit-gradient(linear, left top, right bottom, from(#EEEEFF), to(#008813)); 
+  background: -moz-linear-gradient(left,  #EEEEFF, #008813);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f858ef', endColorstr='#ffe413', GradientType=1);
+}
+
+#menu-holder{
+  width: 100%;
+  height: 49px;
+  background:  url(../images/menu-bg.png) repeat-x;
+}
+
+.wrapper{
+  width: 966px;
+  margin: 0px auto;
+  position: relative;
+}
+
+/* NAVIGATION --------------------------------------------------------*/
+
+
+#nav{
+  display: block;
+  position: absolute;
+  top: 0px;
+  height: 49px;
+  width: 906px;
+}
+
+#nav>li{
+  display: block;
+  float:
+  .wrapper{
+  width: 966px;
+  margin: 0px auto;
+  position: relative;
+}
+ left;
+  height: 100%;
+  margin-right: 32px;
+}
+
+#nav>li:first-child{}
+
+#nav>li>a{
+  display: block;
+  font-size: 16px;
+  color: #bac0c9;
+  text-decoration: none;
+  margin-top: 20px;
+  text-shadow: 0px -2px rgba(0, 0, 0, .8);
+}
+
+#nav>li>a>span.subheader{
+  display: block;
+  font-size: 11px;
+  color: #656b74;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+#nav>li.current-menu-item{
+  background: url(../images/menu-arrow.png) no-repeat center bottom;
+}
+
+
+#nav>li:hover>a{
+  color: #fff;
+}
+
+/* sub navigation */
+
+#nav>li ul{
+  display: block;
+  margin-top: 33px;
+  background: #1d2023;
+  border-radius: 0px 10px 0px 10px;
+  -moz-border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+  
+  -webkit-box-shadow: 0px 3px 2px rgba(0,0,0,0.4); 
+  -moz-box-shadow: 0px 3px 2px rgba(0,0,0,0.4); 
+  box-shadow: 0px 3px 2px rgba(0,0,0,0.4); 
+}
+
+#nav>li>ul ul{
+  margin-top: 0px;
+  border-radius: 0px 10px 10px 10px;
+  -moz-border-radius: 0px 10px 10px 10px;
+  -webkit-border-radius: 0px 10px 10px 10px;
+}
+
+#nav>li ul li a{
+  display: block;
+  padding: 10px 15px;
+  display: block;
+  font-size: 11px;
+  color: #bac0c9;
+  text-decoration: none;
+}
+
+#nav>li ul li a span{
+  display: block;
+}
+
+#nav>li ul li a:hover{
+  background: #000;
+  color: #fff;
+}
+
+#nav>li ul li:last-child a:hover{ /* last item its rounded at bottom */
+  border-radius: 0px 0px 10px 10px;
+  -moz-border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+}

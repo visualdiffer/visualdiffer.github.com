@@ -263,11 +263,6 @@ form {
   padding: 20px;
 }
 
-/*img {
-  width: 100%;
-  max-width: 100%;
-}
-*/
 /*******************************************************************************
 Full-Width Styles
 *******************************************************************************/
@@ -318,11 +313,11 @@ Full-Width Styles
   background: none;
   text-shadow: #111 0px 0px 10px;
   margin: 0;
+  padding-bottom: 4px;
 }
 
 #main_content_wrap {
   background: #f2f2f2;
-  border-top: 1px solid #111;
   border-bottom: 1px solid #111;
   padding-bottom: 5px;
 }

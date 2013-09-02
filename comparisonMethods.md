@@ -30,7 +30,7 @@ The complete list of supported comparison methods
 <tr>
 <td>Compare file timestamps
 <br/>Very quick</td>
-<td>two file are identical if they have the same timestamp.
+<td>Two file are identical if they have the same timestamp.
 <br/>It is used the Unix <strong>last modified date</strong> for comparison.
 <br/>If file A timestamp is less than file B it is marked as <strong>older</strong> and it will be shown with different color. 
 <br/>It is possible to set a span in seconds to consider two files with same timestamp, see below</td>
@@ -101,6 +101,12 @@ User can choose to not traverse special files like symbolic links and packages
 <td>Skip Packages</td>
 <td>If checked special OSX files (so called bundle or packages)
 <br/>like Applications and Frameworks will not be traversed</td>
+</tr>
+<tr>
+<td>Check Resource Forks</td>
+<td>Check if files are <a href="http://en.wikipedia.org/wiki/Resource_fork">resource forks</a>, this can slow down the comparison.<br/>
+When this option is on if the file is a resource fork its size is determined from its structured data.
+</td>
 </tr>
 </table>
 

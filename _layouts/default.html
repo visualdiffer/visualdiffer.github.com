@@ -10,6 +10,7 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
 
     <link rel="stylesheet" type="text/css" media="screen" href="css/stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/menu.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/vd.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/toc.css"/>
 
@@ -17,11 +18,20 @@
     <script src="js/jquery.cookie.js"></script>
     <script src="js/jquery.tocLight.js"></script>
 
+    <!-- superfish -->
+    <link rel="stylesheet" media="screen" href="css/superfish.css" /> 
+    <script type="text/javascript" src="js/superfish/hoverIntent.js"></script>
+    <script type="text/javascript" src="js/superfish/superfish.js"></script>
+    <script type="text/javascript" src="js/superfish/supersubs.js"></script>
+    <!-- ENDS superfish -->
+
     <title>VisualDiffer - {{ page.title }}</title>
 
     <script type="text/javascript">
       $(function() {
         $.toc.clickHideButton({saveShowStatus:true});
+        $("ul.sf-menu").superfish({
+        });
       });
     </script>
 </head>
@@ -33,9 +43,37 @@
         <header class="inner">
           <h1 id="project_title"><a href="index.html">VisualDiffer Wiki</a></h1>
           <h2 id="project_tagline">{{ page.title }}</h2>
-
         </header>
     </div>
+
+
+      <!-- Menu -->
+      <div id="menu">
+        <!-- ENDS menu-holder -->
+        <div id="menu-holder">
+          <!-- wrapper-menu -->
+          <div class="wrapper">
+            <!-- Navigation -->
+            <ul class="sf-menu" id="nav">
+              <li class="current-menu-item"><a href="index.html">Home</a></li>
+              <li><a href="http://visualdiffer.com/mantis/my_view_page.php">Support</a></li>
+              <li><a href="http://visualdiffer.com/">VisualDiffer Home</a></li>
+              <li class="current">
+                <a href="index.html">Other Apps</a>
+                <ul>
+                    <li><a href="http://visualgrep.com">VisualGrep</a></li>
+                    <li><a href="https://itunes.apple.com/us/app/clipboardplain/id528607880?mt=12">Clipboard Plain</a></li>
+                </ul>
+              </li>
+            </ul>
+            <!-- Navigation -->
+          </div>
+          <!-- wrapper-menu -->
+        </div>
+        <!-- ENDS menu-holder -->
+      </div>
+      <!-- ENDS Menu -->
+
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
