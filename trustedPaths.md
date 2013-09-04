@@ -41,4 +41,7 @@ Trusting **/var/folders** ensures every path generated inside it (at any deeper 
 Where configure Trusted Paths
 =============================
 
-You can add and removed trusted paths from VisualDiffer Preference panel
+You can add (drag&drop is supported) and/or remove paths manually from the VisualDiffer Preference panel.
+
+The paths colored in red no longer exist.
+
