@@ -6,4 +6,5 @@ relative_permalinks: false
 minItemsToShowToc: 2
 
 # Needed only when generate Apple Help
-showToggleButton: true
+showToggleButton: false
+prefixDir: ../../common/
