@@ -7,3 +7,5 @@ minItemsToShowToc: 2
 
 # Needed only when generate Apple Help
 showToggleButton: true
+
+exclude: ['mas', '*.sh', 'params.json']
