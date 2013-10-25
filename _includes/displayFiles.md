@@ -33,3 +33,30 @@ The complete list of show options
 </tr>
 </table>
 
+## Choose Folders to View
+
+It is possible to hide empty and orphans folders.
+Folders can be empty because they don't contains any file on disk or because all files/folders inside them are filtered.  
+Orphans folders are present only on one side (left or right)
+
+## Show Filtered Files
+
+When a filter founds matches the elements are not visible but in case it's necessary to shown them you can click on the `Filtered` button
+
+Some files are excluded by defaults, the complete list is shown below.  
+Default filters can be changed or totally deleted from `Session Preferences` window
+
+<table class="bordered">
+<tr>
+<th>Description</th>
+<th>File</th>
+</tr>
+<tr>
+<td>Backup and system files</td>
+<td>.DS_Store, *~</td>
+</tr>
+<tr>
+<td>Control Version System files </td>
+<td>CVS, .svn, .git, .hg", .bzr</td>
+</tr>
+</table>
