@@ -1,0 +1,24 @@
+/*
+    Contains all modified styles
+*/
+
+.image.header {
+    float: left;
+    padding: 0 0.5em 1em 0;
+    top: 0.25em;
+}
+
+.image.header img {
+    width: 48px;
+}
+
+.major .image img {
+    width: 90px;
+}
+
+acronym {
+    border: 1px dotted;
+    border-radius: 5px;
+    color: #E89980;
+    padding: 1px;
+}

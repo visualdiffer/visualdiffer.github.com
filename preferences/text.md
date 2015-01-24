@@ -16,26 +16,32 @@ prefixDir: ../
 
 Show a symbol near the lines to indicate the type of difference
 
-<table class="bordered">
-<tr>
-<th>Symbol</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>!</td>
-<td>Left and right lines contain are different</td>
-</tr>
-<tr>
-<td>-</td>
-<td>Line is present on left but not on right side</td>
-</tr>
-<tr>
-<td>+</td>
-<td>Line is present on right but not on left side</td>
-</tr>
-</table>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>!</td>
+                <td>Left and right lines contain are different</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>Line is present on left but not on right side</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>Line is present on right but not on left side</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-![image]({{ page.prefixDir }}{{ site.prefixDir }}images/screenshots/differenceIndicator.png)
+![image]({{ page.prefixDir }}{{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/differenceIndicator.png)
 
 # Tab Width
 

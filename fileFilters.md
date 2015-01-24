@@ -14,37 +14,43 @@ Files can be escluded from comparison specifying filenames, relative paths, file
 
 Available filters for filenames are shown below
 
-<table class="bordered">
-<tr>
-<th>Comparator Filter</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>Contains</td>
-<td>Filename contains the specified string</td>
-</tr>
-<tr>
-<td>Begins with</td>
-<td>Filename begins with the specified string</td>
-</tr>
-<tr>
-<td>Ends with</td>
-<td>Filename ends with the specified string</td>
-</tr>
-<tr>
-<td>Is</td>
-<td>Filename is equal to the specified string</td>
-</tr>
-<tr>
-<td>Is not</td>
-<td>Filename is not equal to the specified string</td>
-</tr>
-<tr>
-<td>Is like</td>
-<td>Filename equals the specified string
-<br/>? and * are allowed as wildcard characters, where ? matches 1 character and * matches 0 or more characters</td>
-</tr>
-</table>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Comparator Filter</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Contains</td>
+                <td>Filename contains the specified string</td>
+            </tr>
+            <tr>
+                <td>Begins with</td>
+                <td>Filename begins with the specified string</td>
+            </tr>
+            <tr>
+                <td>Ends with</td>
+                <td>Filename ends with the specified string</td>
+            </tr>
+            <tr>
+                <td>Is</td>
+                <td>Filename is equal to the specified string</td>
+            </tr>
+            <tr>
+                <td>Is not</td>
+                <td>Filename is not equal to the specified string</td>
+            </tr>
+            <tr>
+                <td>Is like</td>
+                <td>Filename equals the specified string
+                    <br/>? and * are allowed as wildcard characters, where ? matches 1 character and * matches 0 or more characters</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 # Path Filters
 

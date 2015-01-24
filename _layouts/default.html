@@ -1,31 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+  Alpha by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>VisualDiffer - {{ page.title }}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="VisualDiffer : " />
+    <meta name="keywords" content="macosx, osx, apple, diff, differ, visual, compare, search, regular expression" />
+    <link rel="shortcut icon" href="img/ternaryop/vd/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="img/ternaryop/vd/favicon.ico" type="image/x-icon"/>
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.dropotron.min.js"></script>
+    <script src="js/jquery.scrollgress.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+      <link rel="stylesheet" href="css/skel.css" />
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/style-wide.css" />
+    </noscript>
+    <link rel="stylesheet" href="css/top-extras.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
-
-    <link rel="stylesheet" type="text/css" media="screen" href="css/stylesheet.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/menu.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/vd.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/toc.css"/>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/jquery.tocLight.js"></script>
 
-    <!-- superfish -->
-    <link rel="stylesheet" media="screen" href="css/superfish.css" /> 
-    <script type="text/javascript" src="js/superfish/hoverIntent.js"></script>
-    <script type="text/javascript" src="js/superfish/superfish.js"></script>
-    <script type="text/javascript" src="js/superfish/supersubs.js"></script>
-    <!-- ENDS superfish -->
-
-    <title>VisualDiffer - {{ page.title }}</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/wiki/vd.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/wiki/toc.css"/>
 
     <script type="text/javascript">
       $(function() {
@@ -34,63 +40,55 @@
         });
       });
     </script>
-</head>
 
+  </head>
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <h1 id="project_title"><a href="index.html">VisualDiffer Wiki</a></h1>
-          <h2 id="project_tagline">{{ page.title }}</h2>
+    <!-- Header -->
+      <header id="header" class="skel-layers-fixed">
+        <h1><span class="image header"><img src="img/ternaryop/vd/logo.png"/></span><a href="index.html">VisualDiffer</a> Wiki</h1>
+        <nav id="nav">
+          <ul>
+            <li><a href="http://visualdiffer.com/mantis/my_view_page.php">Support</a></li>
+            <li><a href="" class="icon fa-angle-down">Products</a>
+              <ul>
+                <li><a href="http://visualdiffer.com">VisualDiffer</a></li>
+                <li><a href="http://visualgrep.com">VisualGrep</a></li>
+                <li><a href="https://itunes.apple.com/us/app/clipboardplain/id528607880?mt=12">Clipboard Plain</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+    <!-- Main -->
+      <section id="main" class="container">
+        <header>
+          <h2>{{ page.title }}</h2>
+          <!-- <p></p> -->
         </header>
-    </div>
+        <div class="row">
+          <div class="12u">
 
-
-      <!-- Menu -->
-      <div id="menu">
-        <!-- ENDS menu-holder -->
-        <div id="menu-holder">
-          <!-- wrapper-menu -->
-          <div class="wrapper">
-            <!-- Navigation -->
-            <ul class="sf-menu" id="nav">
-              <li class="current-menu-item"><a href="index.html">Home</a></li>
-              <li><a href="http://visualdiffer.com/mantis/my_view_page.php">Support</a></li>
-              <li><a href="http://visualdiffer.com/">VisualDiffer Home</a></li>
-              <li class="current">
-                <a href="index.html">Other Apps</a>
-                <ul>
-                    <li><a href="http://visualgrep.com">VisualGrep</a></li>
-                    <li><a href="https://itunes.apple.com/us/app/clipboardplain/id528607880?mt=12">Clipboard Plain</a></li>
-                </ul>
-              </li>
-            </ul>
-            <!-- Navigation -->
-          </div>
-          <!-- wrapper-menu -->
-        </div>
-        <!-- ENDS menu-holder -->
-      </div>
-      <!-- ENDS Menu -->
-
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+            <!-- Text -->
+              <section class="box">
         {{ content | toc_generate }}
+              </section>
+
+          </div>
+        </div>
       </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Copyright 2010-2013 <a href="http://visualdiffer.com">VisualDiffer</a></p>
+    <!-- Footer -->
+      <footer id="footer">
+        <ul class="icons">
+          <li><a href="http://www.twitter.com/visualdiffer" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="https://github.com/visualdiffer" class="icon fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; VisualDiffer. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
       </footer>
-    </div>
-
-    
 
   </body>
 </html>
-

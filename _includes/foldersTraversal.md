@@ -2,11 +2,15 @@
 
 User can choose to not traverse special files like symbolic links and packages
 
-<table class="bordered">
+<div class="table-wrapper">
+<table class="alt">
+<thead>
 <tr>
 <th>File</th>
 <th>Description</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td>Follow Symbolic Links</td>
 <td>If checked the symbolic links will be traversed</td>
@@ -22,4 +26,6 @@ User can choose to not traverse special files like symbolic links and packages
 When this option is on if the file is a resource fork its size is determined from its structured data.
 </td>
 </tr>
+</tbody>
 </table>
+</div>

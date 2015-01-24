@@ -15,14 +15,16 @@ img.folder-legend {
 	max-height: 16px;
 }
 
-#main_content a[href ^="https://"], .link-https {
-	background: url('../images/lock-icon.png') center right no-repeat;
-	padding-right: 16px;
+#main a[href ^="https://"]:before, .link-https:before {
+	content: "\f023";
+	font-family: FontAwesome;
+	padding-right: 0.2em;
 }
 
-#main_content a[href ^="http://"], .link-external {
-	background: url('../images/external-icon.png') center right no-repeat;
-	padding-right: 16px;
+#main a[href ^="http://"]:before, .link-external:before {
+	content: "\f08e";
+	font-family: FontAwesome;
+	padding-right: 0.2em;
 }
 
 table.file-legend tr td {

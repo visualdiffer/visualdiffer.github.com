@@ -13,10 +13,8 @@ Finder integration
 Should I select files (or folders) from Finder context menu?
 -----
 
-VisualDiffer app doesn't directly offer a way to integrate with Finder but you can use the Automator script available on [VisualDiffer Hub](https://github.com/visualdiffer).
-
-Download the script from [github](https://github.com/visualdiffer/scripts/downloads), unzip it and double click on workflow file to install.
-
+VisualDiffer app doesn't directly offer a way to integrate with Finder but you can use the Automator script available on [VisualDiffer Hub](https://github.com/visualdiffer).  
+Download the script from [github](https://github.com/visualdiffer/scripts/downloads), unzip it and double click on workflow file to install.  
 How to use it is described [here](https://github.com/visualdiffer/scripts)
 
 Use as External Diff Tool

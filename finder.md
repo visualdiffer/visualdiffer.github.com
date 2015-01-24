@@ -8,8 +8,7 @@ title: OSX Finder Integration
 subtitle: Launch VisualDiffer directly from OSX Finder
 ---
 
-You can run VisualDiffer directly from OSX Finder, selecting two files or two folders
-
+You can run VisualDiffer directly from OSX Finder, selecting two files or two folders.  
 You don't need to run VisualDiffer then select items to compare, if you are on Finder do that from it
 
 <div style="border: 1px dashed; padding:0 10px">

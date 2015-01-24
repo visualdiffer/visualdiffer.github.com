@@ -15,44 +15,55 @@ Before being compared two files they must be aligned, the alignment rule can be 
 The default alignment method compares file name strings, if they are match case then they will be aligned.  
 Suppose you have the scenario shown below
 
-<table class="bordered">
-<tr>
-<th>Left</th>
-<th>Right</th>
-</tr>
-<tr>
-<td>winter.jpg</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>WINTER.JPG</td>
-</tr>
-<tr>
-<td>summer.jpg</td>
-<td>summer.jpg</td>
-</tr>
-</table>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Left</th>
+                <th>Right</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>winter.jpg</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>WINTER.JPG</td>
+            </tr>
+            <tr>
+                <td>summer.jpg</td>
+                <td>summer.jpg</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-By default winter.jpg and WINTER.JPG will be not aligned because their strings don't match uppercase and lowercase characters.
-
+By default winter.jpg and WINTER.JPG will be not aligned because their strings don't match uppercase and lowercase characters.  
 This result sometimes isn't what you expect, maybe you want to ignore uppercase/lowercase differences.  
 This can be achieved selecting 'Ignore File Name Case' from popup menu.</p>
 
-<table class="bordered">
-<tr>
-<th>Left</th>
-<th>Right</th>
-</tr>
-<tr>
-<td>winter.jpg</td>
-<td>WINTER.JPG</td>
-</tr>
-<tr>
-<td>summer.jpg</td>
-<td>summer.jpg</td>
-</tr>
-</table>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Left</th>
+                <th>Right</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>winter.jpg</td>
+                <td>WINTER.JPG</td>
+            </tr>
+            <tr>
+                <td>summer.jpg</td>
+                <td>summer.jpg</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 # Align by HFS+ Filesystem Case
 
@@ -70,48 +81,60 @@ If the last scenario is true, the alignment will try to be smart, first it searc
 
 # Align by User Defined Rules (required OSX Lion or above)
 
-There are scenarios where it is necessary to align files having different names.
-
+There are scenarios where it is necessary to align files having different names.  
 The most simple scenario has files with same name but different extension as shown below
 
-<table class="bordered">
-<tr>
-<th>Left</th>
-<th>Right</th>
-</tr>
-<tr>
-<td>001.jpg</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>001.raw</td>
-</tr>
-<tr>
-<td>002.jpg</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>002.RAW</td>
-</tr>
-</table>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Left</th>
+                <th>Right</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001.jpg</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>001.raw</td>
+            </tr>
+            <tr>
+                <td>002.jpg</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>002.RAW</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 Suppose you want to align ignoring the file extension to produce the result shown below
 
-<table class="bordered">
-<tr>
-<th>Left</th>
-<th>Right</th>
-</tr>
-<tr>
-<td>001.jpg</td>
-<td>001.raw</td>
-</tr>
-<td>002.jpg</td>
-<td>002.RAW</td>
-</tr>
-</table>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Left</th>
+                <th>Right</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001.jpg</td>
+                <td>001.raw</td>
+            </tr>
+            <tr>
+                <td>002.jpg</td>
+                <td>002.RAW</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 This can be achieved using VisualDiffer 'user defined alignment rules'.
 
@@ -119,7 +142,7 @@ This can be achieved using VisualDiffer 'user defined alignment rules'.
 
 You can create, edit or delte rules from Session Preferences Dialog
 
-![image]({{ site.prefixDir }}images/screenshots/sessionPrefAlignment.png)
+![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/sessionPrefAlignment.png)
 
 More rules can be assigned to a VisualDiffer session comparison, they are evaluated from top to bottom.
 
@@ -127,7 +150,7 @@ More rules can be assigned to a VisualDiffer session comparison, they are evalua
 
 When you add a new rule (or edit an existing one) you access to the dialog shown below
 
-![image]({{ site.prefixDir }}images/screenshots/alignRule.png) 
+![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/alignRule.png) 
 
 A rule has
 
@@ -149,28 +172,34 @@ So we use the `$1` to get the first group present on regexp (in this example the
 
 Now if you save the rule and then run the comparison you obtain the result shown below
 
-<table class="bordered">
-<tr>
-<th>Left</th>
-<th>Right</th>
-</tr>
-<tr>
-<td>001.jpg</td>
-<td>001.raw</td>
-</tr>
-<tr>
-<td>002.jpg</td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>002.RAW</td>
-</tr>
-</table>
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Left</th>
+                <th>Right</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001.jpg</td>
+                <td>001.raw</td>
+            </tr>
+            <tr>
+                <td>002.jpg</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>002.RAW</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 But `002.jpg` and `002.RAW` files are not aligned because `002.RAW` extension is uppercase, this can be easily fixed ignoring the case on right expression as shown in figure shown below
 
-![image]({{ site.prefixDir }}images/screenshots/alignRuleIgnoreCase.png)
+![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/alignRuleIgnoreCase.png)
 
 ## Test Rule
 

@@ -4,6 +4,7 @@
     border: 1px solid #AAAAAA;
     font-size: 95%;
     padding: 5px;
+    border-collapse: inherit;
 }
 #toc h2, .toc h2 {
     border: medium none;
