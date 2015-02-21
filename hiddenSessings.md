@@ -1,3 +1,13 @@
+---
+permalink: hiddenSessings.html
+layout: default
+
+# mainAnchor is used by Apple links
+mainAnchor: hiddenSessings
+title: Hidden settings
+subtitle: Settings not yet available from the preferences panel
+---
+
 Hidden settings
 ===
 
