@@ -1,7 +1,7 @@
 ---
 permalink: index.html
 layout: default
-title: VisualDiffer Wiki Main Page
+title: Wiki Main Page
 noToc: true
 ---
 
@@ -25,7 +25,8 @@ Extra Features
 Other sites
 ===========
 
-* [VisualDiffer official site](http://visualdiffer.com)
-* [Mac App Store Page](http://itunes.apple.com/us/app/visualdiffer/id412386481?mt=12&ls=1)
-* [VisualDiffer Bug report](http://bugs.visualdiffer.com/)
-* [VisualDiffer on Twitter](http://twitter.com/visualdiffer)
+* [{{site.common_links[0].title}}]({{site.common_links[0].link}})
+* [{{site.common_links[2].title}}]({{site.common_links[2].link}})
+* [{{site.common_links[3].title}}]({{site.common_links[3].link}})
+* [{{site.common_links[4].title}}]({{site.common_links[4].link}})
+* [{{site.common_links[5].title}}]({{site.common_links[5].link}})

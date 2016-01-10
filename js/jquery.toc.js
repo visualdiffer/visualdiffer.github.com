@@ -13,7 +13,7 @@
  *   http://www.gnu.org/licenses/gpl.html
  */
 (function($) {
-    var toggleHTML = '<div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a id="toctogglelink" class="internal" href="#">hide</a>]</span></div>';
+    var toggleHTML = '<div id="toctitle"><h2>%1</h2> <span class="toctoggle">[<a id="toctogglelink" class="internal" href="#">%2</a>]</span></div>';
     var tocContainerHTML = '<div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>%1<ul>%2</ul></td></tr></tbody></table></div>';
 
     function createLevelHTML(anchorId, tocLevel, tocSection, tocNumber, tocText, tocInner) {
@@ -30,8 +30,10 @@
 
     $.fn.toc = function(settings) {
         var config = {
+            renderIn: 'self',
             anchorPrefix: 'tocAnchor-',
             showAlways: false,
+            minItemsToShowToc: 2,
             saveShowStatus: true,
             contentsText: 'Contents',
             hideText: 'hide',
@@ -79,8 +81,11 @@
             ++itemNumber;
         });
 
-        var hasOnlyOneTocItem = tocLevel == 1 && tocSection <= 2;
-        var show = config.showAlways ? true : !hasOnlyOneTocItem;
+        // for convenience itemNumber starts from 1
+        // so we decrement it to obtain the index count
+        var tocIndexCount = itemNumber - 1;
+
+        var show = config.showAlways ? true : config.minItemsToShowToc <= tocIndexCount;
 
         // check if cookie plugin is present otherwise doesn't try to save
         if (config.saveShowStatus && typeof($.cookie) == "undefined") {
@@ -94,11 +99,17 @@
             var replacedTocContainer = tocContainerHTML
                 .replace('%1', replacedToggleHTML)
                 .replace('%2', tocHTML);
-            tocContainer.prepend(replacedTocContainer);
+
+            // Renders in default or specificed path
+            if (config.renderIn != 'self') {
+              $(config.renderIn).html(replacedTocContainer);
+            } else {
+              tocContainer.prepend(replacedTocContainer);
+            }
 
             $('#toctogglelink').click(function() {
                 var ul = $($('#toc ul')[0]);
-                
+
                 if (ul.is(':visible')) {
                     ul.hide();
                     $(this).text(config.showText);
@@ -119,7 +130,7 @@
 
             if (config.saveShowStatus && $.cookie('toc-hide')) {
                 var ul = $($('#toc ul')[0]);
-                
+
                 ul.hide();
                 $('#toctogglelink').text(config.showText);
                 $('#toc').addClass('tochidden');

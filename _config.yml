@@ -1,7 +1,68 @@
+# Build settings
 markdown: rdiscount
 highlighter: pygments
 
 relative_permalinks: false
+
+###############
+# Site settings
+###############
+title: VisualDiffer
+keywords: "mac,apple,osx,apps,development,macosx,diff,differ,visual,compare,search,regular expression"
+favicon: img/favicon.ico
+
+# Show the popup about cookies
+cookiesdirective: true
+
+common_links:
+ - title: Official site
+   link: &official_link http://visualdiffer.com/
+ - title: Wiki
+   link: &wiki_link http://wiki.visualdiffer.com/
+ - title: Bug report, features request
+   link: &bugs_link http://bugs.visualdiffer.com/
+ - title: Mac App Store Page
+   link: &mas_link "http://itunes.apple.com/us/app/visualdiffer/id412386481?mt=12&ls=1"
+ - title: Twitter
+   link: &twitter_link https://twitter.com/visualdiffer
+ - title: GitHub
+   link: &github_link https://github.com/visualdiffer
+
+header:
+  title: VisualDiffer
+  subtitle: Wiki
+  # must be 128x128
+  logo_image: img/logo.png
+
+# Set 'provider' to false to turn analytics off globally
+analytics:
+  provider: google
+  google: 
+    tracking_id: 'UA-257181-9'
+
+navigation_links:
+ - title: Support
+   link: *bugs_link
+ - title: Products
+   submenus:
+     - title: VisualDiffer
+       link: *official_link
+     - title: VisualGrep
+       link: http://visualgrep.com
+     - title: Clipboard Plain
+       link: https://itunes.apple.com/us/app/clipboardplain/id528607880?mt=12
+
+social_links:
+ - label: Twitter
+   link: *twitter_link
+   icon_class: fa-twitter
+ - label: GitHub
+   link: *github_link
+   icon_class: fa-github
+
+######################
+# Application specific
+######################
 
 minItemsToShowToc: 2
 
@@ -9,3 +70,9 @@ minItemsToShowToc: 2
 showToggleButton: true
 
 exclude: ['mas', '*.sh', 'params.json']
+
+toc:
+# Set 'type' to false to turn toc generation off globally
+# Supported types: 'js' or 'plugin'
+  type: js
+

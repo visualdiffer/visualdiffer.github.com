@@ -1,0 +1,10 @@
+      <footer id="footer">
+        <ul class="icons">
+          {% for l in site.social_links %}
+          <li><a href="{{l.link}}" class="icon {{l.icon_class}}"><span class="label">{{l.label}}</span></a></li>
+          {% endfor %}
+        </ul>
+        <ul class="copyright">
+          <li>&copy; {{site.title}}. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </footer>

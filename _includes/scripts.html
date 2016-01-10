@@ -1,0 +1,25 @@
+    <script src="js/jquery.cookie.js"></script>
+    {% case site.toc.type %}
+    {% when 'plugin' %}
+        <script src="js/jquery.tocLight.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $.toc.clickHideButton({saveShowStatus:true});
+            });
+        </script>
+    {% when 'js' %}
+        {% if page.noToc == null || page.noToc == false %}
+        <script src="js/jquery.toc.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#main').toc({
+                    {% if site.minItemsToShowToc != null %}
+                    minItemsToShowToc: {{ site.minItemsToShowToc }},
+                    {% endif %}
+                    renderIn: '#toc-container'
+                });
+            });
+        </script>
+        {% endif %}
+    {% endcase %}
+

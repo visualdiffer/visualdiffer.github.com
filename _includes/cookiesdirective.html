@@ -1,0 +1,18 @@
+{% if site.cookiesdirective != null and site.cookiesdirective %}
+    <script src="js/jquery.cookiesdirective.js"></script>
+    <script type="text/javascript">
+        $(function(){
+          $.cookiesDirective({
+            privacyPolicyUri: 'ternaryopPrivacyPolicy.html',
+            explicitConsent: false,
+            position : 'bottom',
+            scriptWrapper: function(){},  
+            cookieScripts: 'Google Analytics', 
+            backgroundColor: '#444',
+            message: 'We use third party cookies to ensure that we give you the best experience on our website. Such third party cookies may track your use of this website. If you continue without changing your settings, we\'ll assume that you are happy to receive all cookies',
+            linkColor: '#ffffff',
+            showPrivacyPolicyLink: false
+          });
+        });
+      </script>
+{% endif %}

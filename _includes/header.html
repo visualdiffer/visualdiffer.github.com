@@ -1,0 +1,20 @@
+      <header id="header" class="skel-layers-fixed">
+        <h1><span class="image header"><img src="{{ site.header.logo_image }}"/></span><a href="index.html">{{ site.header.title }}</a> {{ site.header.subtitle }}</h1>
+        <nav id="nav">
+          <ul>
+          {% for i in site.navigation_links %}
+          {% if i.link %}
+          <li><a href="{{ i.link }}">{{ i.title }}</a></li>
+          {% else if i.submenus %}
+          <li><a href="" class="icon fa-angle-down">{{ i.title }}</a>
+            <ul>
+              {% for sub in i.submenus %}
+              <li><a href="{{ sub.link }}">{{ sub.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endif %}
+          {% endfor %}
+          </ul>
+        </nav>
+      </header>

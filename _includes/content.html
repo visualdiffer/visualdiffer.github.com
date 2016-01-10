@@ -1,0 +1,21 @@
+        <header>
+          <h2>{{ page.title }}</h2>
+        </header>
+        <div class="row">
+          <div class="12u">
+
+            <!-- Text -->
+              <section class="box">
+                {% case site.toc.type %}
+                {% when 'plugin' %}
+                  {{ content | toc_generate }}
+                {% when 'js' %}
+                  <div id="toc-container"></div>
+                  {{ content }}
+                {% else %}
+                  {{ content }}
+                {% endcase %}
+              </section>
+
+          </div>
+        </div>
