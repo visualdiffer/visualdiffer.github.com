@@ -1,5 +1,5 @@
 # Build settings
-markdown: rdiscount
+markdown: kramdown
 highlighter: pygments
 
 relative_permalinks: false
