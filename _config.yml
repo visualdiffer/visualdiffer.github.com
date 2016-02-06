@@ -1,6 +1,6 @@
 # Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 
 relative_permalinks: false
 
