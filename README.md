@@ -6,7 +6,14 @@ Works with brew
 
 ```
 gem install jekyll
-gem install nokogiri
-gem install rdiscount
-gem install pygments.rb
 ```
+# Local Test
+
+### Generate documentation for the Apple Help system
+
+	./jekyllapple.sh
+
+### Running site
+
+	jekyll serve --watch
+
