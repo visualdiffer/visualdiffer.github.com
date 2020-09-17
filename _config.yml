@@ -36,7 +36,7 @@ header:
 
 # Set 'provider' to false to turn analytics off globally
 analytics:
-  provider: google
+  provider: off
   google: 
     tracking_id: 'UA-257181-9'
 
