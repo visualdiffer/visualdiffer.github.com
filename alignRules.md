@@ -140,7 +140,7 @@ This can be achieved using VisualDiffer 'user defined alignment rules'.
 
 ## Managing Alignment Rules
 
-You can create, edit or delte rules from Session Preferences Dialog
+You can create, edit or delete rules from Session Preferences Dialog
 
 ![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/sessionPrefAlignment.png)
 

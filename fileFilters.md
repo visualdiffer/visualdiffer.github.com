@@ -8,7 +8,7 @@ title: File Filters
 subtitle: Filters can be used to exclude files from comparison, copy and delete actions
 ---
 
-Files can be escluded from comparison specifying filenames, relative paths, file sizes and file modification dates.
+Files can be excluded from comparison specifying filenames, relative paths, file sizes and file modification dates.
 
 # Filename Filters
 

@@ -16,7 +16,7 @@ The complete list of show options
         <tbody>
             <tr>
                 <td>Show All</td>
-                <td>No matters which comaprison result, show files</td>
+                <td>No matters which comparison result, show files</td>
             </tr>
             <tr>
                 <td>Only Mismatches</td>
