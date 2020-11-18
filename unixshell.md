@@ -8,7 +8,7 @@ title: Unix Shell Scripting Support
 subtitle: Launching the UI from the Unix command line
 ---
 
-Using visdiff
+[Using visdiff](#using_visdiff)
 =============
 
 The /Applications/VisualDiffer.app/**Contents/Resources** folder contains the executable file `visdiff` that integrates with VisualDiffer.app  
@@ -16,7 +16,7 @@ You can launch `visdiff` to visually show files or folders comparison using the 
 
 	visdiff <left file or folder> <right file or folder>
 
-Wait for document close
+[Wait for document close](#wait_for_document_close)
 =======================
 
 If you need to wait the user closes the diff document window (not necessary to quit application) associated to visdiff command you can pass the switch `--wait`
@@ -40,7 +40,7 @@ $ sudo ln -s /Applications/VisualDiffer.app/Contents/Resources/visdiff /usr/bin/
 
 <span style="color:red; font-weight:bold">Note:</span> **VisualDiffer can't install command line tool from its User Interface to comply with Apple's submission guidelines**
 
-OSX sandbox, temporary files and annoying file open panel prompts
+[OSX sandbox, temporary files and annoying file open panel prompts](#osx_sandbox_temporary_files_and_annoying_file_open_panel_prompts)
 =================================================================
 
 VisualDiffer was sandboxed starting from version 1.4.2 and many users found using it very annoying because any comparison prompts to pick folders/files.  
