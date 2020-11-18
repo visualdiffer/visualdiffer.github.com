@@ -8,6 +8,7 @@ title: Unix Shell Scripting Support
 subtitle: Launching the UI from the Unix command line
 ---
 
+[Using visdiff](#using_visdiff)
 =============
 
 The /Applications/VisualDiffer.app/**Contents/Helpers** folder contains the executable file `visdiff` that integrates with VisualDiffer.app  
