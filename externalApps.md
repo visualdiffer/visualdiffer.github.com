@@ -33,7 +33,7 @@ It's necessary to create a Unix script and place it inside the directory
 	/Users/<<username>>/Library/Application Scripts/com.visualdiffer/editors
 
 The script must have a very specific file name ending with `.sh`.  
-The file name is the so called `App Bundle Identifier` and can be found executing from the Terminal App the following command (the example uses Sublime Text)
+The file name is the so called `App Bundle Identifier` and can be found executing from the Terminal.app the following command (the example uses Sublime Text)
 
 	osascript -e 'id of app "/Applications/Sublime Text.app"'
 	
@@ -43,3 +43,5 @@ that returns `com.sublimetext.3` so the file name will be
 	
 Some examples are available at [externalapp-integration](https://github.com/visualdiffer/externalapp-integration/tree/master/editors) repository
 
+**Warning** The script must have the execute flag set otherwise will not be called (i.e. `chmod +x script`)  
+The Console.app could contain error messages
