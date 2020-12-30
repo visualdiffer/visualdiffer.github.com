@@ -11,10 +11,12 @@ subtitle: Launching the UI from the Unix command line
 Using visdiff
 =============
 
-The /Applications/VisualDiffer.app/**Contents/Resources** folder contains the executable file `visdiff` that integrates with VisualDiffer.app  
+The /Applications/VisualDiffer.app/**Contents/Helpers** folder contains the executable file `visdiff` that integrates with VisualDiffer.app  
 You can launch `visdiff` to visually show files or folders comparison using the following syntax
 
 	visdiff <left file or folder> <right file or folder>
+
+**Note:** On versions older than 1.8.0  `visdiff` is located at `/Applications/VisualDiffer.app/Contents/Resources/visdiff`
 
 Wait for document close
 =======================
@@ -35,7 +37,7 @@ VisualDiffer.app doesn't install the terminal application but manually it is pos
 It requires root access, from a terminal prompt type the command shown below
 
 {% highlight bash %}
-$ sudo ln -s /Applications/VisualDiffer.app/Contents/Resources/visdiff /usr/bin/visdiff
+$ sudo ln -s /Applications/VisualDiffer.app/Contents/Helpers /usr/bin/visdiff
 {% endhighlight %}
 
 <span style="color:red; font-weight:bold">Note:</span> **VisualDiffer can't install command line tool from its User Interface to comply with Apple's submission guidelines**
