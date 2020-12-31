@@ -29,12 +29,14 @@
     }
 
     function anchorName(config, el, tocLevel, tocSection) {
-        console.log(config);
         switch (config.formatName) {
             case 'toc':
                 return tocLevel + '-' + tocSection;
             case 'innerText':
-                return el.text().replace(/[^a-z0-9]+/ig, '_').toLowerCase();
+                return el.text()
+                    .replace(/[^a-z0-9]+/ig, '_')
+                    .replace(/_+$/, '')
+                    .toLowerCase();
             default:
                 return tocLevel + '-' + tocSection;
         }                
