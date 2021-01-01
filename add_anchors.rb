@@ -45,7 +45,6 @@ end
 def heading_hash_syntax(line, buffer, dest_file)
   return false unless /^(====+)|(----+)/.match?(line)
 
-  heading_hash_syntax(line, buffer, dest_file)
   last_line = buffer.pop
   flush_buffer(buffer, dest_file)
   dest_file.puts to_anchor(last_line)
