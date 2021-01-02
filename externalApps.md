@@ -7,7 +7,7 @@ mainAnchor: externalApps
 title: External Apps Integration
 ---
 
-Integrate with other macOS applications
+[Integrate with other macOS applications](#integrate_with_other_macos_applications)
 ==================
 
 VisualDiffer allows
@@ -17,14 +17,14 @@ VisualDiffer allows
 
 The integration requires some shell scripts, they allow the editor caret to be moved at specific lines or open new buffers on existing application instance.
 
-Text Editors
+[Text Editors](#text_editors)
 =======
 
 Files can be open using your preferred text editor.
 Select `Open With` from the context menu to select the destination application.  
 In addiction you can configure the preferred editor from the Preference panel, the selected application will be shown on the top of `Open With` menu.
 
-Open editor at specific line
+[Open editor at specific line](#open_editor_at_specific_line)
 -----
 
 From the Files Diff window it's possible to pass to the application the selected line number so the cursor will move to it.  

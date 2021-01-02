@@ -8,7 +8,7 @@ title: Trusted Paths
 subtitle: How to handle paths with Apple sandbox
 ---
 
-Why we need trusted paths
+[Why we need trusted paths](#why_we_need_trusted_paths)
 =========================
 
 Starting from OSX Lion applications run in the so called [sandbox](http://developer.apple.com/library/mac/#documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html) that is an isolated and secure environment.  
@@ -16,7 +16,7 @@ Applications accessing to file system (reading file, listing a folder) need expl
 User gives his permission to access to a file (or folder) selecting it from a file panel or dragging path to application.  
 VisualDiffer prompts a file panel when it can't access to a file due to permission error, after user selection the path is stored as trusted so next time it isn't necessary to re-prompt.
 
-Using VisualDiffer as external diff tool with sandbox
+[Using VisualDiffer as external diff tool with sandbox](#using_visualdiffer_as_external_diff_tool_with_sandbox)
 =====================================================
 
 VisualDiffer can be used to compare files using other applications ([Dreamweaver](http://www.adobe.com/products/dreamweaver.html), [SourceTree](http://www.sourcetreeapp.com/) and so on), for example to compare a remote file version with the local one.
@@ -25,7 +25,7 @@ Applications like Dreamweaver save to temporary file the remote version and then
 
 This behaviour generates a very frustrating user experience because the user must select the file from the panel again and again.
 
-Use Trusted Paths
+[Use Trusted Paths](#use_trusted_paths)
 =================
 
 Trusted paths resolve this problem, applications save files always on their own specific temporary folders, for example SourceTree can generate the following path
@@ -38,7 +38,7 @@ We can trust **/var/folders** that is the root used by SourceTree to saves tempo
 
 Trusting **/var/folders** ensures every path generated inside it (at any deeper subfolder level) doesn't require any additional user permission and the file panel prompts no longer appears
 
-Where configure Trusted Paths
+[Where configure Trusted Paths](#where_configure_trusted_paths)
 =============================
 
 You can add (drag&drop is supported) and/or remove paths manually from the VisualDiffer Preference panel.  

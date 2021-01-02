@@ -16,18 +16,18 @@ You don't need to run VisualDiffer then select items to compare, if you are on F
 <p>You can download the script <a href="https://github.com/visualdiffer/scripts">here</a></p>
 </div>
 
-# Compare with VisualDiffer
+# [Compare with VisualDiffer](#compare_with_visualdiffer)
 
 Add to Finder context menu (under Services) a new menu item to allow files and folders comparison.
 
-## How to Install
+## [How to Install](#how_to_install)
 - On Lion or above double click on "Compare with VisualDiffer.workflow" file
 - On Snow Leopard you must copy manually the file `Compare with VisualDiffer.workflow` inside the directory `/Users/your account 
 name/Library/Services`. If the directory `Services` doesn't exist you must create it
 
 More details about installation are available <a href="https://github.com/visualdiffer/scripts/blob/master/installServices.md">here</a>
 
-## How to Use
+## [How to Use](#how_to_use)
 
 - When elements to compare are both visible on Finder window simply select the two files or folders and choose "Compare with VisualDiffer" 
 from service menu

@@ -1,4 +1,4 @@
-# Choose Files to View according to differences found
+# [Choose Files to View according to differences found](#choose_files_to_view_according_to_differences_found)
 
 After the comparison complete you can choose which files to view  
 Definition: **Orphan** indicates a file present only on one side
@@ -38,13 +38,13 @@ The complete list of show options
     </table>
 </div>
 
-## Choose Folders to View
+## [Choose Folders to View](#choose_folders_to_view)
 
 It is possible to hide empty and orphans folders.
 Folders can be empty because they don't contains any file on disk or because all files/folders inside them are filtered.  
 Orphans folders are present only on one side (left or right)
 
-## Show Filtered Files
+## [Show Filtered Files](#show_filtered_files)
 
 When a filter founds matches the elements are not visible but in case it's necessary to shown them you can click on the `Filtered` button.  
 Default filters can be changed or totally deleted from `Session Preferences` window.  

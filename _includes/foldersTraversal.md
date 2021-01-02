@@ -1,4 +1,4 @@
-# Folders Traversal
+# [Folders Traversal](#folders_traversal)
 
 User can choose to not traverse special files like symbolic links and packages
 
