@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Add Markdown anchors to all Heading elements (only levels 1 and 2)
+# Add Markdown anchors to Heading elements (only levels 1 and 2)
 # The "Heading Alternate Syntax" must have at least four '=' or '-' characters otherwise the anchor is not added
 # frozen_string_literal: true
 
@@ -26,9 +26,12 @@ def read_header(source_file, dest_file)
 end
 # rubocop:enable Metrics/MethodLength
 
+def contain_link?(str)
+  str =~ /\[.*?\]\(.*?\)/
+end
+
 def to_anchor(str)
-  # is already link
-  return str if /^\s?\[/.match?(str)
+  return str if contain_link?(str)
 
   anchor = str.downcase
               .gsub(/[^a-z0-9]+/, '_')
