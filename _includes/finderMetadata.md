@@ -1,4 +1,4 @@
-# Compare Finder Metadata
+# [Compare Finder Metadata](#compare_finder_metadata)
 
 It is possible to compare OSX Finder Metadata.  
 When the metadata comparison mismatches, for example left file's label is red and right file's label is blue, the other comparison methods (size, timestamp, content) are not evaluated.

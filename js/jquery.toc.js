@@ -28,10 +28,25 @@
             .replace('%3', link);
     }
 
+    function anchorName(config, el, tocLevel, tocSection) {
+        switch (config.formatName) {
+            case 'toc':
+                return tocLevel + '-' + tocSection;
+            case 'innerText':
+                return el.text()
+                    .replace(/[^a-z0-9]+/ig, '_')
+                    .replace(/_+$/, '')
+                    .toLowerCase();
+            default:
+                return tocLevel + '-' + tocSection;
+        }                
+    }
+
     $.fn.toc = function(settings) {
         var config = {
             renderIn: 'self',
             anchorPrefix: 'tocAnchor-',
+            formatName: 'toc',
             showAlways: false,
             minItemsToShowToc: 2,
             saveShowStatus: true,
@@ -55,9 +70,11 @@
             var innerSection = 0;
             var h1 = $(this);
 
+            var name = anchorName(config, h1, tocLevel, tocSection);
+
             h1.nextUntil('h1').filter('h2').each(function() {
                 ++innerSection;
-                var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection + '-' +  + innerSection;
+                var anchorId = config.anchorPrefix + name + '-' +  + innerSection;
                 $(this).attr('id', anchorId);
                 levelHTML += createLevelHTML(anchorId,
                     tocLevel + 1,
@@ -68,7 +85,7 @@
             if (levelHTML) {
                 levelHTML = '<ul>' + levelHTML + '</ul>\n';
             }
-            var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
+            var anchorId = config.anchorPrefix + name;
             h1.attr('id', anchorId);
             tocHTML += createLevelHTML(anchorId,
                 tocLevel,

@@ -16,7 +16,9 @@
                     {% if site.minItemsToShowToc != null %}
                     minItemsToShowToc: {{ site.minItemsToShowToc }},
                     {% endif %}
-                    renderIn: '#toc-container'
+                    renderIn: '#toc-container',
+                    formatName: 'innerText',
+                    anchorPrefix: '',
                 });
             });
         </script>

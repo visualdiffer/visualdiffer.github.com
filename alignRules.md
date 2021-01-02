@@ -10,7 +10,7 @@ subtitle: Change the default file names alignment method
 
 Before being compared two files they must be aligned, the alignment rule can be configured
 
-# Align by Name Case Sensitivity
+# [Align by Name Case Sensitivity](#align_by_name_case_sensitivity)
 
 The default alignment method compares file name strings, if they are match case then they will be aligned.  
 Suppose you have the scenario shown below
@@ -65,7 +65,7 @@ This can be achieved selecting 'Ignore File Name Case' from popup menu.</p>
     </table>
 </div>
 
-# Align by HFS+ Filesystem Case
+# [Align by HFS+ Filesystem Case](#align_by_hfs_filesystem_case)
 
 Normally the <acronym title="Hierarchical File System">HFS+</acronym> disks are formatted ignoring the file name case, so if we have winter.jpg and WINTER.JPG they cannot be created on same directory (because they have the same name).
 
@@ -79,7 +79,7 @@ It is possible to let VisualDiffer determine the file name alignment case algori
 
 If the last scenario is true, the alignment will try to be smart, first it searches if a match case is available (winter.jpg with winter.jpg) then it tries to align with the most similar name.
 
-# Align by User Defined Rules (required OSX Lion or above)
+# [Align by User Defined Rules (required OSX Lion or above)](#align_by_user_defined_rules_required_osx_lion_or_above)
 
 There are scenarios where it is necessary to align files having different names.  
 The most simple scenario has files with same name but different extension as shown below
@@ -138,7 +138,7 @@ Suppose you want to align ignoring the file extension to produce the result show
 
 This can be achieved using VisualDiffer 'user defined alignment rules'.
 
-## Managing Alignment Rules
+## [Managing Alignment Rules](#managing_alignment_rules)
 
 You can create, edit or delete rules from Session Preferences Dialog
 
@@ -146,7 +146,7 @@ You can create, edit or delete rules from Session Preferences Dialog
 
 More rules can be assigned to a VisualDiffer session comparison, they are evaluated from top to bottom.
 
-## Creating a Rule
+## [Creating a Rule](#creating_a_rule)
 
 When you add a new rule (or edit an existing one) you access to the dialog shown below
 
@@ -159,11 +159,11 @@ A rule has
 
 _If you are not familiar with regular expressions please refer to [ICU](http://userguide.icu-project.org/strings/regexp) documentation._
 
-## Left Regular Expression
+## [Left Regular Expression](#left_regular_expression)
 
 The left regexp is used to match a filename on the left side of VisualDiffer Folder View, we want to find all jpg files so we create a group `(.*)` followed by `.jpg` extension.
 
-## Right Pattern Expression
+## [Right Pattern Expression](#right_pattern_expression)
 
 Notice the right expression **isn't** a regular expression, it should contain some special patterns used to access to regular expression groups (if any).
 
@@ -201,6 +201,6 @@ But `002.jpg` and `002.RAW` files are not aligned because `002.RAW` extension is
 
 ![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/alignRuleIgnoreCase.png)
 
-## Test Rule
+## [Test Rule](#test_rule)
 
 It is possible to verify immediately if the expressions work as expected using the 'Test Rule', just type a file name and the 'Result' field will be filled accordingly.

@@ -1,4 +1,4 @@
-# Comparison Method
+# [Comparison Method](#comparison_method)
 
 It is possible to choose which method to use to compare two folders.  
 The method to use is strictly related to user needs, comparing source code (files large only few kilobytes) should use a content comparison but to find which movies (files larger than a gigabytes) are not present on right side is faster compare by file size or file timestamp.  
