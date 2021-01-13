@@ -37,7 +37,7 @@ VisualDiffer.app doesn't install the terminal application but manually it is pos
 It requires root access, from a terminal prompt type the command shown below
 
 {% highlight bash %}
-$ sudo ln -s /Applications/VisualDiffer.app/Contents/Helpers /usr/bin/visdiff
+$ sudo ln -s /Applications/VisualDiffer.app/Contents/Helpers/visdiff /usr/bin/visdiff
 {% endhighlight %}
 
 <span style="color:red; font-weight:bold">Note:</span> **VisualDiffer can't install command line tool from its User Interface to comply with Apple's submission guidelines**
