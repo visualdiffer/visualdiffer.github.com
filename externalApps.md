@@ -43,5 +43,9 @@ that returns `com.sublimetext.3` so the file name will be
 	
 Some examples are available at [externalapp-integration](https://github.com/visualdiffer/externalapp-integration/tree/master/editors) repository
 
+You can install all integration scripts running the command shown below
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/visualdiffer/externalapp-integration/HEAD/install.sh)"
+
 **Warning** The script must have the execute flag set otherwise will not be called (i.e. `chmod +x script`)  
 The Console.app could contain error messages
