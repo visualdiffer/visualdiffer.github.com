@@ -8,7 +8,7 @@ title: File Colors Legend
 subtitle: Colors used in File Differ View
 ---
 
-Lines colors in the File Differ View are based on differences found
+Line colors in the File Differ View are based on differences found.
 
 <div class="table-wrapper">
     <table class="alt">
@@ -31,20 +31,18 @@ Lines colors in the File Differ View are based on differences found
 
             <tr>
                 <td class="file-legend-missing-left"></td>
-                <td>Text content is present only on right, on left the line is missing</td>
+                <td>Text content is present only on the right; on the left the line is missing</td>
             </tr>
 
             <tr>
                 <td class="file-legend-missing-right"></td>
-                <td>Text content is present only on left, on right the line is missing</td>
+                <td>Text content is present only on the left; on the right the line is missing</td>
             </tr>
 
             <tr>
                 <td class="file-legend-merged"></td>
-                <td>Text content has been copied from the other side, this mark the document as edited and can be saved</td>
+                <td>Text content has been copied from the other side; this marks the document as edited and it can be saved</td>
             </tr>
         </tbody>
     </table>
 </div>
-
-

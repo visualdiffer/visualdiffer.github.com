@@ -16,15 +16,13 @@ cookiesdirective: true
 
 common_links:
  - title: Official site
-   link: &official_link http://visualdiffer.com/
+   link: &official_link https://visualdiffer.com/
  - title: Wiki
-   link: &wiki_link http://wiki.visualdiffer.com/
+   link: &wiki_link https://wiki.visualdiffer.com/
  - title: Bug report, features request
-   link: &bugs_link http://bugs.visualdiffer.com/
- - title: Mac App Store Page
-   link: &mas_link "http://itunes.apple.com/us/app/visualdiffer/id412386481?mt=12&ls=1"
- - title: Twitter
-   link: &twitter_link https://twitter.com/visualdiffer
+   link: &bugs_link https://bugs.visualdiffer.com/
+ - title: X
+   link: &x_link https://x.com/visualdiffer
  - title: GitHub
    link: &github_link https://github.com/visualdiffer
 
@@ -47,14 +45,10 @@ navigation_links:
    submenus:
      - title: VisualDiffer
        link: *official_link
-     - title: VisualGrep
-       link: https://itunes.apple.com/us/app/visualgrep/id597887722?mt=12
-     - title: Clipboard Plain
-       link: https://itunes.apple.com/us/app/clipboardplain/id528607880?mt=12
 
 social_links:
  - label: Twitter
-   link: *twitter_link
+   link: *x_link
    icon_class: fa-twitter
  - label: GitHub
    link: *github_link

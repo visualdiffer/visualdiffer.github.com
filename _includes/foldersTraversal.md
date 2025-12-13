@@ -1,6 +1,6 @@
 # [Folders Traversal](#folders_traversal)
 
-User can choose to not traverse special files like symbolic links and packages
+Users can choose not to traverse special files like symbolic links and packages.
 
 <div class="table-wrapper">
 <table class="alt">
@@ -13,17 +13,17 @@ User can choose to not traverse special files like symbolic links and packages
 <tbody>
 <tr>
 <td>Follow Symbolic Links</td>
-<td>If checked the symbolic links will be traversed</td>
+<td>If checked, symbolic links will be traversed</td>
 </tr>
 <tr>
 <td>Skip Packages</td>
-<td>If checked special OSX files (so called bundle or packages)
+<td>If checked, special macOS files (so-called bundles or packages)
 <br/>like Applications and Frameworks will not be traversed</td>
 </tr>
 <tr>
 <td>Check Resource Forks</td>
-<td>Check if files are <a href="http://en.wikipedia.org/wiki/Resource_fork">resource forks</a>, this can slow down the comparison.<br/>
-When this option is on if the file is a resource fork its size is determined from its structured data.
+<td>Checks if files are <a href="https://en.wikipedia.org/wiki/Resource_fork">resource forks</a>; this can slow down the comparison.<br/>
+When this option is on, if the file is a resource fork its size is determined from its structured data.
 </td>
 </tr>
 </tbody>

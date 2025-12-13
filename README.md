@@ -2,10 +2,10 @@
 
 ### Prerequisites
 
-Works with brew
+Requires Homebrew
 
 ```
-gem install jekyll
+bundle install
 ```
 # Local Test
 
@@ -13,7 +13,6 @@ gem install jekyll
 
 	./jekyllapple.sh
 
-### Running site
+### Run the site
 
-	jekyll serve --watch
-
+	bundle exec jekyll serve --watch

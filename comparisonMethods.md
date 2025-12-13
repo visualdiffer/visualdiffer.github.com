@@ -17,7 +17,7 @@ subtitle: The folders comparison method, special files and metadata
 
 # [Timestamp Tolerance](#timestamp_tolerance)
 
-The timestamp comparison considers two files matching when the time (including the seconds) is identical but sometime it would be useful to have a range of tolerance for example when the difference is between 5 seconds.  
-You can set this tolerance entering a positive integer number into the text field `Ignore differences of X seconds or less`
+The timestamp comparison considers two files matching when the time (including the seconds) is identical, but sometimes it is useful to have a tolerance range, for example when the difference is around 5 seconds.  
+You can set this tolerance by entering a positive integer number into the text field `Ignore differences of X seconds or less`.
 
 {% include displayFiles.md %}

@@ -4,36 +4,36 @@ layout: default
 
 # mainAnchor is used by Apple links
 mainAnchor: finder
-title: OSX Finder Integration
-subtitle: Launch VisualDiffer directly from OSX Finder
+title: macOS Finder Integration
+subtitle: Launch VisualDiffer directly from macOS Finder
 ---
 
-You can run VisualDiffer directly from OSX Finder, selecting two files or two folders.  
-You don't need to run VisualDiffer then select items to compare, if you are on Finder do that from it
+You can run VisualDiffer directly from macOS Finder by selecting two files or two folders.  
+You don't need to run VisualDiffer and then select items to compare; if you are in Finder you can do it from there.
 
 <div style="border: 1px dashed; padding:0 10px">
-<h2>The OSX Finder integration requires a script not present on standard installation, you must download it from visualdiffer github's repository</h2>
+<h2>The macOS Finder integration requires a script not present on standard installation; you must download it from the VisualDiffer GitHub repository</h2>
 <p>You can download the script <a href="https://github.com/visualdiffer/scripts">here</a></p>
 </div>
 
 # [Compare with VisualDiffer](#compare_with_visualdiffer)
 
-Add to Finder context menu (under Services) a new menu item to allow files and folders comparison.
+Add to the Finder context menu (under Services) a new menu item to allow file and folder comparison.
 
 ## [How to Install](#how_to_install)
-- On Lion or above double click on "Compare with VisualDiffer.workflow" file
-- On Snow Leopard you must copy manually the file `Compare with VisualDiffer.workflow` inside the directory `/Users/your account 
-name/Library/Services`. If the directory `Services` doesn't exist you must create it
+- On Lion or above double-click the "Compare with VisualDiffer.workflow" file
+- On Snow Leopard you must manually copy the file `Compare with VisualDiffer.workflow` inside the directory `/Users/your account 
+name/Library/Services`. If the directory `Services` doesn't exist you must create it.
 
-More details about installation are available <a href="https://github.com/visualdiffer/scripts/blob/master/installServices.md">here</a>
+More details about installation are available <a href="https://github.com/visualdiffer/scripts/blob/master/installServices.md">here</a>.
 
 ## [How to Use](#how_to_use)
 
-- When elements to compare are both visible on Finder window simply select the two files or folders and choose "Compare with VisualDiffer" 
-from service menu
-- When elements to compare are on different folders
-	1. select first element from Finder and click on the service menu item
-	2. browse to second element and again click on the service menu item
-	3. the comparison will start
+- When elements to compare are both visible in a Finder window, simply select the two files or folders and choose "Compare with VisualDiffer" 
+from the Services menu
+- When elements to compare are in different folders
+	1. Select the first element from Finder and click on the service menu item
+	2. Browse to the second element and again click on the service menu item
+	3. The comparison will start
 	
-If you have more Finder windows visible first element can be selected using menu item from first window and second from another Finder window
+If you have more Finder windows visible the first element can be selected using the menu item from one window and the second from another Finder window.

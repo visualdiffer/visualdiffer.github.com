@@ -14,4 +14,4 @@ prefixDir: ../
 
 # Fonts
 
-User can select the fonts to use in Folders Differ View and File Differ View
+Users can select the fonts to use in Folders Differ View and File Differ View.

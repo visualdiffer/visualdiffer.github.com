@@ -14,4 +14,4 @@ prefixDir: ../
 
 # ESC key closes documents/application
 
-Together with standard shortcuts to close document windows (Cmd-W) and application (Cmd-Q) it's possible to use the ESC key to close current window, when pressed on the last open window the application quits.
+Together with standard shortcuts to close document windows (Cmd-W) and the application (Cmd-Q) it's possible to use the ESC key to close the current window; when pressed on the last open window the application quits.

@@ -14,7 +14,7 @@ prefixDir: ../
 
 # Show additional difference indicator
 
-Show a symbol near the lines to indicate the type of difference
+Show a symbol near the lines to indicate the type of difference.
 
 <div class="table-wrapper">
     <table class="alt">
@@ -27,7 +27,7 @@ Show a symbol near the lines to indicate the type of difference
         <tbody>
             <tr>
                 <td>!</td>
-                <td>Left and right lines contain are different</td>
+                <td>Left and right lines are different</td>
             </tr>
             <tr>
                 <td>-</td>
@@ -45,4 +45,4 @@ Show a symbol near the lines to indicate the type of difference
 
 # Tab Width
 
-Tab characters are replaces with spaces, it is possible to specify the number of spaces for tab
+Tab characters are replaced with spaces; it is possible to specify the number of spaces per tab.

@@ -20,8 +20,8 @@ prefixDir: ../
 
 # Preferred Viewer/Editor
 
-It is possible to open a file with an external application, the application can be chosen from the context menu.  
-When user double clicks a file, the default system application (if any) will be launched.  
-The default system application can be overridden (**only** inside VisualDiffer) specifying the predefined one on "Preferred Viewer/Editor"
+It is possible to open a file with an external application; the application can be chosen from the context menu.  
+When the user double-clicks a file, the default system application (if any) will be launched.  
+The default system application can be overridden (**only** inside VisualDiffer) by specifying the predefined one on "Preferred Viewer/Editor".
 
 **The default system application is not changed.**

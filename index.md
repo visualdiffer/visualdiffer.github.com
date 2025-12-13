@@ -26,8 +26,5 @@ Extra Features
 Other sites
 ===========
 
-* [{{site.common_links[0].title}}]({{site.common_links[0].link}})
-* [{{site.common_links[2].title}}]({{site.common_links[2].link}})
-* [{{site.common_links[3].title}}]({{site.common_links[3].link}})
-* [{{site.common_links[4].title}}]({{site.common_links[4].link}})
-* [{{site.common_links[5].title}}]({{site.common_links[5].link}})
+{% for link in site.common_links %}
+* [{{link.title}}]({{link.link}}){% endfor %}
