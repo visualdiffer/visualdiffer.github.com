@@ -1,50 +1,75 @@
-<!DOCTYPE HTML>
-<!--
-  Alpha by HTML5 UP
-  html5up.net | @n33co
-  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ site.title }}{% if page.title %} - {% endif %}{{ page.title }}</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else if page.subtitle %}{{ page.subtitle }}{% else if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" >
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else if page.subtitle %}{{ page.subtitle }}{% else if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{{ site.keywords }}" />
     <link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon"/>
     <link rel="icon" href="{{ site.favicon }}" type="image/x-icon"/>
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.dropotron.min.js"></script>
-    <script src="js/jquery.scrollgress.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-layers.min.js"></script>
-    <script src="js/init.js"></script>
-    <noscript>
-      <link rel="stylesheet" href="css/skel.css" />
-      <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/style-wide.css" />
-    </noscript>
-    <link rel="stylesheet" href="css/top-extras.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#ecfdf3',
+                100: '#d1fadf',
+                200: '#a7f3c7',
+                300: '#6ee7b7',
+                400: '#34d399',
+                500: '#10b981',
+                600: '#059669',
+                700: '#047857',
+                800: '#065f46',
+                900: '#064e3b'
+              }
+            },
+            fontFamily: {
+              sans: ['"Manrope"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              display: ['"Manrope"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+            },
+            boxShadow: {
+              glow: '0 20px 60px -25px rgba(16, 185, 129, 0.55)'
+            }
+          }
+        }
+      }
+    </script>
 
     {% include stylesheets.html %}
+    <script src="js/jquery.min.js"></script>
     {% include scripts.html %}
     {% include cookiesdirective.html %}
-
     {% include analytics.html %}
-
   </head>
-  <body>
+  <body class="min-h-screen bg-white text-slate-900 antialiased">
 
-    <!-- Header -->
     {% include header.html %}
 
-    <!-- Main -->
-      <section id="main" class="container">
-        {% include content.html %}
-      </section>
+    <main id="main" class="w-full px-6 lg:px-12 py-10 lg:py-14">
+      {% include content.html %}
+    </main>
 
-    <!-- Footer -->
     {% include footer.html %}
+
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('hidden');
+          navLinks.classList.toggle('flex');
+        });
+      }
+    </script>
   </body>
 </html>

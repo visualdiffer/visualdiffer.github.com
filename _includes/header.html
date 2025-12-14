@@ -1,20 +1,92 @@
-      <header id="header" class="skel-layers-fixed">
-        <h1><span class="image header"><img src="{{ site.header.logo_image }}"/></span><a href="index.html">{{ site.header.title }}</a> {{ site.header.subtitle }}</h1>
-        <nav id="nav">
-          <ul>
+<header class="sticky top-0 z-50 border-b border-brand-100/80 bg-white/80 backdrop-blur">
+  <div class="w-full px-6 lg:px-12">
+    <div class="flex items-center gap-4 py-4">
+      {% assign page_title = page.title | default: site.header.subtitle %}
+      {% assign page_description = page.subtitle | default: page.description | default: site.description %}
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3">
+          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-100 ring-1 ring-brand-200 shadow-inner">
+            <img src="{{ site.header.logo_image }}" alt="{{ site.title }} logo" class="h-9 w-9 object-contain" loading="lazy" />
+          </span>
+          <div class="leading-tight">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">{{ site.header.title }}</p>
+            <p class="text-xl font-bold text-slate-900">{{ page_title }}</p>
+            <p class="text-sm text-slate-600">{{ page_description }}</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3 ml-auto">
+        {% if site.common_links and site.common_links.size > 0 %}
+        {% assign primary_link = site.common_links[0] %}
+        <div class="hidden md:flex md:flex-col md:items-start md:gap-1">
+          <a href="{{ primary_link.link }}" class="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700">
+            {{ primary_link.title }}
+          </a>
+        </div>
+        {% endif %}
+
+        <nav class="hidden md:flex items-center gap-3 ml-auto">
+          <ul class="flex items-center gap-3">
           {% for i in site.navigation_links %}
-          {% if i.link %}
-          <li><a href="{{ i.link }}">{{ i.title }}</a></li>
-          {% else if i.submenus %}
-          <li><a href="" class="icon fa-angle-down">{{ i.title }}</a>
-            <ul>
-              {% for sub in i.submenus %}
-              <li><a href="{{ sub.link }}">{{ sub.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </li>
-          {% endif %}
+            {% if i.link %}
+            <li>
+              <a href="{{ i.link }}" class="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700">
+                {{ i.title }}
+              </a>
+            </li>
+            {% elsif i.submenus %}
+            <li class="relative group">
+              <div class="flex items-center gap-2 rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700">
+                <span>{{ i.title }}</span>
+                <i class="fa-solid fa-chevron-down text-xs text-white/80"></i>
+              </div>
+              <div class="absolute right-0 mt-3 flex flex-col gap-1 rounded-xl border border-brand-100 bg-white p-3 shadow-lg opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 transition transform translate-y-1">
+                {% for sub in i.submenus %}
+                <a href="{{ sub.link }}" class="rounded-lg px-3 py-2 text-slate-700 transition hover:bg-brand-50 hover:text-brand-800 whitespace-nowrap">{{ sub.title }}</a>
+                {% endfor %}
+              </div>
+            </li>
+            {% endif %}
           {% endfor %}
           </ul>
         </nav>
-      </header>
+
+        <button id="menu-toggle" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-100 bg-white text-brand-700 shadow-sm transition hover:border-brand-200 hover:text-brand-900 md:hidden" aria-label="Apri o chiudi il menu di navigazione">
+          <span class="sr-only">Menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav id="nav-links" class="hidden flex-col gap-2 rounded-2xl border border-brand-100 bg-white/95 p-4 text-sm font-semibold text-slate-800 shadow-glow md:hidden">
+      <ul class="flex flex-col gap-2 w-full">
+      {% for i in site.navigation_links %}
+        {% if i.link %}
+        <li>
+          <a href="{{ i.link }}" class="flex items-center justify-between rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700">
+            <span>{{ i.title }}</span>
+            <span class="text-brand-100 md:hidden">↗</span>
+          </a>
+        </li>
+        {% elsif i.submenus %}
+        <li class="relative group">
+          <div class="flex items-center justify-between rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700">
+            <span>{{ i.title }}</span>
+            <i class="fa-solid fa-chevron-down text-xs text-white/80"></i>
+          </div>
+          <div class="mt-2 flex flex-col gap-1 rounded-xl border border-brand-100 bg-white/95 p-3 shadow-lg md:absolute md:left-1/2 md:top-11 md:w-56 md:-translate-x-1/2 md:translate-y-2 md:border-brand-100 md:opacity-0 md:pointer-events-none md:group-hover:pointer-events-auto md:group-hover:opacity-100 md:group-hover:translate-y-0 md:transition">
+            {% for sub in i.submenus %}
+            <a href="{{ sub.link }}" class="rounded-lg px-3 py-2 text-slate-700 transition hover:bg-brand-50 hover:text-brand-800">{{ sub.title }}</a>
+            {% endfor %}
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

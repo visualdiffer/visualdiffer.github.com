@@ -1,10 +1,16 @@
-      <footer id="footer">
-        <ul class="icons">
-          {% for l in site.social_links %}
-          <li><a href="{{l.link}}" class="icon {{l.icon_class}}"><span class="label">{{l.label}}</span></a></li>
-          {% endfor %}
-        </ul>
-        <ul class="copyright">
-          <li>&copy; {{site.title}}. All rights reserved.</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-        </ul>
-      </footer>
+<footer class="mt-12 border-t border-brand-100 bg-white/70 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-6 lg:px-12 py-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+    <div class="space-y-1">
+      <p class="text-sm font-semibold text-brand-800">&copy; {{site.title}}</p>
+      <p class="text-sm text-slate-600">Documentation and support for VisualDiffer.</p>
+    </div>
+    <div class="flex items-center gap-3">
+      {% for l in site.social_links %}
+      <a href="{{l.link}}" class="flex h-10 w-10 items-center justify-center rounded-full border border-brand-100 bg-white text-brand-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-brand-50 hover:text-brand-900">
+        <i class="fa-brands {{l.icon_class}}"></i>
+        <span class="sr-only">{{l.label}}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,120 @@
+/* Tailored utilities for wiki content alongside Tailwind. */
+
+#main h1,
+#main h2,
+#main h3,
+#main h4 {
+  scroll-margin-top: 6rem;
+}
+
+#toc,
+.toc,
+#toc-container {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+#toc h2,
+.toc h2,
+#toc .toctitle,
+.toc .toctitle {
+  border: none;
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #065f46;
+}
+
+#toc ul,
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul,
+.toc ul ul {
+  margin: 6px 0 0 14px;
+}
+
+#toc li {
+  margin: 4px 0;
+}
+
+#toc a {
+  color: #047857;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#toc a:hover {
+  color: #065f46;
+}
+
+table.folder-legend tr td:first-child {
+  text-align: center;
+}
+
+table.folder-legend tr td:nth-child(2) {
+  vertical-align: middle;
+}
+
+table.folder-legend tr td {
+  padding: 6px 10px;
+}
+
+img.folder-legend {
+  max-width: 16px;
+  max-height: 16px;
+}
+
+table.file-legend tr td {
+  padding: 6px 10px;
+}
+
+td.file-legend-same {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+td.file-legend-different {
+  background-color: #d1fadf;
+}
+
+td.file-legend-missing-left {
+  background-color: #e0f2fe;
+}
+
+td.file-legend-missing-right {
+  background-color: #fef9c3;
+}
+
+td.file-legend-merged {
+  background-color: #fef3c7;
+}
+
+#main a[href^="https://"]::before,
+#main a[href^="http://"]::before,
+.link-https::before,
+.link-external::before {
+  font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free";
+  padding-right: 0.35em;
+  font-weight: 900;
+}
+
+#main a[href^="https://"]::before,
+.link-https::before {
+  content: "\f023";
+}
+
+#main a[href^="http://"]::before,
+.link-external::before {
+  content: "\f08e";
+}

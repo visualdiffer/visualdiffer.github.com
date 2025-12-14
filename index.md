@@ -1,8 +1,9 @@
 ---
 permalink: index.html
 layout: default
-title: Wiki Main Page
+title: Wiki Home
 noToc: true
+fake_toc_title: Wiki Home
 ---
 
 Table of Contents
@@ -21,10 +22,3 @@ Extra Features
 * [Unix Shell Scripting Support](unixshell.html)
 * [Frequently Asked Questions](faq.html)
 * [Integrate with macOS Finder context menu](finder.html)
-
-
-Other sites
-===========
-
-{% for link in site.common_links %}
-* [{{link.title}}]({{link.link}}){% endfor %}

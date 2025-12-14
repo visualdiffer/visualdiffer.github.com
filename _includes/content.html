@@ -1,21 +1,26 @@
-        <header>
-          <h2>{{ page.title }}</h2>
-        </header>
-        <div class="row">
-          <div class="12u">
-
-            <!-- Text -->
-              <section class="box">
-                {% case site.toc.type %}
-                {% when 'plugin' %}
-                  {{ content | toc_generate }}
-                {% when 'js' %}
-                  <div id="toc-container"></div>
-                  {{ content }}
-                {% else %}
-                  {{ content }}
-                {% endcase %}
-              </section>
-
-          </div>
+<section class="relative">
+  <div class="relative">
+    <div class="flex flex-col gap-10 lg:flex-row">
+      {% if (site.toc.type == 'js' and (page.noToc == null or page.noToc == false)) or page.fake_toc_title %}
+      <aside class="lg:w-72 lg:flex-none order-first">
+        <div id="toc-container" class="sticky top-28 space-y-3 text-sm text-brand-900">
+          {% if page.fake_toc_title %}
+          <div class="font-semibold text-brand-800">{{ page.fake_toc_title }}</div>
+          {% else %}
+          <div class="font-semibold text-brand-800">On this page</div>
+          {% endif %}
         </div>
+      </aside>
+      {% endif %}
+
+      <article class="prose prose-lg max-w-none prose-a:text-brand-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-brand-800 prose-strong:text-brand-800 prose-headings:text-slate-900">
+        {% case site.toc.type %}
+        {% when 'plugin' %}
+          {{ content | toc_generate }}
+        {% else %}
+          {{ content }}
+        {% endcase %}
+      </article>
+    </div>
+  </div>
+</section>

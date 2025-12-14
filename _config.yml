@@ -49,7 +49,7 @@ navigation_links:
 social_links:
  - label: Twitter
    link: *x_link
-   icon_class: fa-twitter
+   icon_class: fa-x-twitter
  - label: GitHub
    link: *github_link
    icon_class: fa-github
@@ -69,4 +69,3 @@ toc:
 # Set 'type' to false to turn toc generation off globally
 # Supported types: 'js' or 'plugin'
   type: js
-
