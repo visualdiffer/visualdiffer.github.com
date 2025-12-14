@@ -1538,6 +1538,57 @@ td.file-legend-merged {
   padding-right: 0.35em;
   font-weight: 900;
 }
+@layer components {
+  .finder-callout {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 3);
+    padding: calc(var(--spacing) * 6) calc(var(--spacing) * 7);
+    border: 1px solid var(--color-brand-200);
+    background: linear-gradient(135deg, var(--color-brand-50), var(--color-white));
+    border-radius: var(--radius-2xl);
+    color: var(--color-slate-900);
+  }
+  .finder-callout__header {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+  }
+  .finder-callout__icon {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background: var(--color-brand-600);
+    color: var(--color-white);
+    box-shadow: 0 12px 28px rgba(4, 120, 87, 0.25);
+  }
+  .finder-callout__title {
+    display: flex;
+    align-items: center;
+    min-height: 2.25rem;
+    margin: 0 !important;
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-800);
+  }
+  .finder-callout p {
+    margin: 0 !important;
+    color: var(--color-slate-700);
+  }
+  .finder-callout a {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-brand-700);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+  .finder-callout a:hover {
+    color: var(--color-brand-800);
+  }
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;

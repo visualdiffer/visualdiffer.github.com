@@ -11,9 +11,14 @@ subtitle: Launch VisualDiffer directly from macOS Finder
 You can run VisualDiffer directly from macOS Finder by selecting two files or two folders.  
 You don't need to run VisualDiffer and then select items to compare; if you are in Finder you can do it from there.
 
-<div style="border: 1px dashed; padding:0 10px">
-<h2>The macOS Finder integration requires a script not present on standard installation; you must download it from the VisualDiffer GitHub repository</h2>
-<p>You can download the script <a href="https://github.com/visualdiffer/scripts">here</a></p>
+<div class="finder-callout" role="note" aria-label="Finder integration download">
+  <div class="finder-callout__header">
+    <div class="finder-callout__icon">
+      <i class="fa-solid fa-download" aria-hidden="true"></i>
+    </div>
+    <h2 class="finder-callout__title">Download the Finder helper before you start</h2>
+  </div>
+  <p class="finder-callout__text">The Finder integration relies on a helper script that is not bundled with VisualDiffer. Grab it from the VisualDiffer GitHub repository <a href="https://github.com/visualdiffer/scripts">here</a>.</p>
 </div>
 
 # [Compare with VisualDiffer](#compare_with_visualdiffer)
