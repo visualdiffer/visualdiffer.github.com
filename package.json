@@ -1,0 +1,28 @@
+{
+  "name": "visualdiffer.github.com",
+  "version": "1.0.0",
+  "description": "The visualdiffer wiki static site",
+  "main": "add_anchor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visualdiffer/visualdiffer.github.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/visualdiffer/visualdiffer.github.com/issues"
+  },
+  "homepage": "https://github.com/visualdiffer/visualdiffer.github.com#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19"
+  }
+}

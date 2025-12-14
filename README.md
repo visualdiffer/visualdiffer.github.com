@@ -2,11 +2,15 @@
 
 ### Prerequisites
 
-Requires Homebrew
+    bundle install
+    npm install
 
-```
-bundle install
-```
+### Tailwind
+
+Generate the `CSS` every time styles on `input.css` change
+
+    npx @tailwindcss/cli -i ./css/input.css -o css/theme.css
+
 # Local Test
 
 ### Generate documentation for the Apple Help system

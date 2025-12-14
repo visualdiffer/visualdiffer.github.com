@@ -41,10 +41,6 @@ analytics:
 navigation_links:
  - title: Support
    link: *bugs_link
- - title: Products
-   submenus:
-     - title: VisualDiffer
-       link: *official_link
 
 social_links:
  - label: Twitter
