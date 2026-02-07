@@ -20,3 +20,7 @@ Generate the `CSS` every time styles on `input.css` change
 ### Run the site
 
 	bundle exec jekyll serve --watch
+
+or make it available on local network
+
+	bundle exec jekyll serve --host=0.0.0.0 --watch
