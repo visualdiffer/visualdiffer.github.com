@@ -26,7 +26,7 @@ VisualDiffer can be integrated with many applications thanks to the command-line
 ------------------------------------------------------
 
 - Set 'Visual Diff Tool' to: 'Other'
-- Set 'Diff Command' to: /Applications/VisualDiffer.app/Contents/Resources/visdiff
+- Set 'Diff Command' to: `/Applications/VisualDiffer.app/Contents/Helpers/visdiff`
 - Set Arguments to: $LOCAL $REMOTE
 
 [VisualDiffer always prompts for a file open panel, why?](#visualdiffer_always_prompts_for_a_file_open_panel_why)
