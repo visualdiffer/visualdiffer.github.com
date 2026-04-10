@@ -20,7 +20,7 @@ How to use it is described [here](https://github.com/visualdiffer/scripts).
 [Use as External Diff Tool](#use_as_external_diff_tool)
 =========================
 
-VisualDiffer can be integrated with many applications thanks to the command-line utility [visdiff](unix_shell_support.html).
+VisualDiffer can be integrated with many applications thanks to the command-line utility [visdiff](unixshell.html).
 
 [SourceTree](https://www.sourcetreeapp.com/)
 ------------------------------------------------------
