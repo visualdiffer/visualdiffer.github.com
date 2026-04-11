@@ -20,13 +20,13 @@ How to use it is described [here](https://github.com/visualdiffer/scripts).
 [Use as External Diff Tool](#use_as_external_diff_tool)
 =========================
 
-VisualDiffer can be integrated with many applications thanks to the command-line utility [visdiff](unix_shell_support.html).
+VisualDiffer can be integrated with many applications thanks to the command-line utility [visdiff](unixshell.html).
 
 [SourceTree](https://www.sourcetreeapp.com/)
 ------------------------------------------------------
 
 - Set 'Visual Diff Tool' to: 'Other'
-- Set 'Diff Command' to: /Applications/VisualDiffer.app/Contents/Resources/visdiff
+- Set 'Diff Command' to: `/Applications/VisualDiffer.app/Contents/Helpers/visdiff`
 - Set Arguments to: $LOCAL $REMOTE
 
 [VisualDiffer always prompts for a file open panel, why?](#visualdiffer_always_prompts_for_a_file_open_panel_why)
