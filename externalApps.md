@@ -54,9 +54,6 @@ The Console.app could contain error messages.
 =======
 
 VisualDiffer supports AppleScript, allowing other applications and scripts to open a diff programmatically.
-[AppleScript example](#applescript_example)
------
-
 The following example activates VisualDiffer and opens a diff between two files:
 
 ```applescript
