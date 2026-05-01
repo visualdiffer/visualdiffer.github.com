@@ -16,6 +16,11 @@ The complete list of supported comparison methods is below.
         </thead>
         <tbody>
             <tr>
+                <td>Compare file names only<br/>Very quick</td>
+                <td>Two files are identical if they have the same name (including file extension).
+                    <br/>No content, size, or timestamp is read.</td>
+            </tr>
+            <tr>
                 <td>Compare file sizes<br/>Very quick</td>
                 <td>Two files are identical if they have the same file size</td>
             </tr>
@@ -36,7 +41,7 @@ The complete list of supported comparison methods is below.
             </tr>
             <tr>
                 <td>Compare file timestamp, size and content<br/>Slow on large files</td>
-                <td>Compare the file content; only if the content is different compare the timestamp, and only if the timestamp differs compare the size</td>
+                <td>Compare the file size; only if the size is equal compare the file content as binary, byte by byte. If the files differ but have the same timestamp, they are marked as <strong>changed</strong> (content modified without a modification date update).</td>
             </tr>
             <tr>
                 <td>Compare file content ignoring line ending differences<br/>Slow on large files</td>
