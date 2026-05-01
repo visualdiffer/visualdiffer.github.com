@@ -20,3 +20,7 @@ Generate the `CSS` every time styles on `input.css` change
 ### Run the site
 
 	bundle exec jekyll serve --watch
+
+# Deploy
+
+The site is hosted on [GitHub Pages](https://pages.github.com/). Pushing to the `main` branch triggers an automatic deployment — no manual steps required.
