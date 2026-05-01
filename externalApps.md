@@ -49,3 +49,21 @@ You can install all integration scripts by running the command shown below:
 
 **Warning** The script must have the execute flag set otherwise it will not be called (i.e. `chmod +x script`).  
 The Console.app could contain error messages.
+
+[AppleScript](#applescript)
+=======
+
+VisualDiffer supports AppleScript, allowing other applications and scripts to open a diff programmatically.
+[AppleScript example](#applescript_example)
+-----
+
+The following example activates VisualDiffer and opens a diff between two files:
+
+```applescript
+osascript <<'EOF'
+tell application "VisualDiffer"
+    activate
+    open diff leftPath "/tmp/sandbox_bug/file7.txt" rightPath "/Users/dave/sandbox_bug/file1.txt"
+end tell
+EOF
+```
