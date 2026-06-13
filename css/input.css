@@ -94,6 +94,14 @@ img.folder-legend {
   max-height: 16px;
 }
 
+img.wiki-img {
+  max-width: 50%;
+  border: 1px solid #94a3b8;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 3px;
+}
+
 table.file-legend tr td {
   padding: 6px 10px;
 }

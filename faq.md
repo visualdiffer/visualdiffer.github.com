@@ -14,8 +14,7 @@ title: Frequently Asked Questions
 -----
 
 The VisualDiffer app doesn't directly offer a way to integrate with Finder, but you can use the Automator script available on [VisualDiffer Hub](https://github.com/visualdiffer).  
-Download the script from [GitHub](https://github.com/visualdiffer/scripts/downloads), unzip it and double-click the workflow file to install.  
-How to use it is described [here](https://github.com/visualdiffer/scripts).
+How to install and use it is described on the [Finder integration](finder.html) page.
 
 [Use as External Diff Tool](#use_as_external_diff_tool)
 =========================
@@ -32,8 +31,7 @@ VisualDiffer can be integrated with many applications thanks to the command-line
 [VisualDiffer always prompts for a file open panel, why?](#visualdiffer_always_prompts_for_a_file_open_panel_why)
 =======================================================
 
-Starting from version 1.4.2 VisualDiffer fully complies with
-[Apple sandboxing](https://developer.apple.com/library/mac/#documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html) rules and this introduced a different way to access the file system.
+VisualDiffer runs inside the [Apple sandbox](https://developer.apple.com/documentation/security/app_sandbox), which introduced a different way to access the file system.
 
 [Open existing vdiff sessions](#open_existing_vdiff_sessions)
 ----------------------------
@@ -45,7 +43,6 @@ If VisualDiffer is used as an external diff tool you may need to manually add pa
 
 [Customize the file date/time format in Folder Differ View](#customize_the_file_date_time_format_in_folder_differ_view)
 =========================================================
-<span style="color:red">Since version 1.4.4 or above</span>
 
 By default the Folder Differ View shows for files and folders a long format containing seconds; currently this value can't be changed from the user interface but you can set it from the terminal.
 

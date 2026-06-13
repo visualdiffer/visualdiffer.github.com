@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -221,6 +221,12 @@
   }
   .sticky {
     position: sticky;
+  }
+  .start {
+    inset-inline-start: var(--spacing);
+  }
+  .end {
+    inset-inline-end: var(--spacing);
   }
   .top-0 {
     top: calc(var(--spacing) * 0);
@@ -887,6 +893,9 @@
   .block {
     display: block;
   }
+  .contents {
+    display: contents;
+  }
   .flex {
     display: flex;
   }
@@ -1200,6 +1209,10 @@
     --tw-blur: blur(8px);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
+  .invert {
+    --tw-invert: invert(100%);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
@@ -1295,7 +1308,7 @@
   }
   .md\:left-1\/2 {
     @media (width >= 48rem) {
-      left: calc(1/2 * 100%);
+      left: calc(1 / 2 * 100%);
     }
   }
   .md\:flex {
@@ -1315,7 +1328,7 @@
   }
   .md\:-translate-x-1\/2 {
     @media (width >= 48rem) {
-      --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+      --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
@@ -1513,6 +1526,13 @@ table.folder-legend tr td {
 img.folder-legend {
   max-width: 16px;
   max-height: 16px;
+}
+img.wiki-img {
+  max-width: 50%;
+  border: 1px solid #94a3b8;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 3px;
 }
 table.file-legend tr td {
   padding: 6px 10px;

@@ -1,9 +1,9 @@
 ---
-permalink: hiddenSessings.html
+permalink: hiddenSettings.html
 layout: default
 
 # mainAnchor is used by Apple links
-mainAnchor: hiddenSessings
+mainAnchor: hiddenSettings
 title: Hidden settings
 subtitle: Settings not yet available from the preferences panel
 ---

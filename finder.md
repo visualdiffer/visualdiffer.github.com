@@ -26,9 +26,7 @@ You don't need to run VisualDiffer and then select items to compare; if you are 
 Add to the Finder context menu (under Services) a new menu item to allow file and folder comparison.
 
 ## [How to Install](#how_to_install)
-- On Lion or above double-click the "Compare with VisualDiffer.workflow" file
-- On Snow Leopard you must manually copy the file `Compare with VisualDiffer.workflow` inside the directory `/Users/your account 
-name/Library/Services`. If the directory `Services` doesn't exist you must create it.
+Double-click the "Compare with VisualDiffer.workflow" file to install it.
 
 More details about installation are available <a href="https://github.com/visualdiffer/scripts/blob/master/installServices.md">here</a>.
 

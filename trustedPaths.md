@@ -11,7 +11,7 @@ subtitle: How to handle paths with Apple sandbox
 [Why we need trusted paths](#why_we_need_trusted_paths)
 =========================
 
-Starting from macOS Lion, applications run in the so-called [sandbox](https://developer.apple.com/library/mac/#documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html), an isolated and secure environment.  
+Applications run in the so-called [sandbox](https://developer.apple.com/documentation/security/app_sandbox), an isolated and secure environment.  
 Applications accessing the file system (reading a file, listing a folder) need explicit permission from the user.  
 The user grants permission to access a file (or folder) by selecting it from a file panel or dragging the path to the application.  
 VisualDiffer prompts a file panel when it can't access a file due to a permission error; after the user selects it the path is stored as trusted so next time it isn't necessary to re-prompt.

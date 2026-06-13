@@ -19,7 +19,7 @@ The complete list of supported metadata
                 <td>Compare all labels assigned to a file</td>
             </tr>
             <tr>
-                <td>Tags<br/><strong>Available in macOS 10.9 or above</strong></td>
+                <td>Tags</td>
                 <td>Compare all tags assigned to a file</td>
             </tr>
         </tbody>

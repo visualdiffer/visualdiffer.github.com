@@ -6,19 +6,31 @@ noToc: true
 fake_toc_title: Wiki Home
 ---
 
-Table of Contents
-=================
+Folder Compare
+==============
 
-* [Folder Colors Legend](foldersLegend.html)
-* [File Colors Legend](fileLegend.html)
+* [Colors Legend](colorsLegend.html)
+* [Folder Compare View](folderView.html)
+* [Folder Operations](folderOperations.html)
 * [Comparison Methods](comparisonMethods.html)
-* [Integrate with other macOS applications](externalApps.html)
-* [Trusted Paths](trustedPaths.html)
 * [Alignment Rules](alignRules.html)
+* [File Filters](fileFilters.html)
+
+File Diff
+=========
+
+* [File Diff View](fileDiff.html)
+
+Integration & Settings
+======================
+
+* [Trusted Paths](trustedPaths.html)
+* [Integrate with other macOS applications](externalApps.html)
 
 Extra Features
 ==============
 
-* [Unix Shell Scripting Support](unixshell.html)
+* [visdiff — Command-Line Tool](unixshell.html)
+* [Hidden Settings](hiddenSettings.html)
 * [Frequently Asked Questions](faq.html)
 * [Integrate with macOS Finder context menu](finder.html)

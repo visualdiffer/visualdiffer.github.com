@@ -4,67 +4,100 @@ layout: default
 
 # mainAnchor is used by Apple links
 mainAnchor: unixShell
-title: Unix Shell Scripting Support
-subtitle: Launching the UI from the Unix command line
+title: visdiff
+subtitle: Command-line tool for launching VisualDiffer from the terminal
 ---
 
-[Using visdiff](#using_visdiff)
-=============
+`visdiff` is a command-line tool bundled with VisualDiffer. It opens a comparison directly from the terminal without having to launch the app manually.
 
-The /Applications/VisualDiffer.app/**Contents/Helpers** folder contains the executable file `visdiff` that integrates with VisualDiffer.app.  
-You can launch `visdiff` to visually show a comparison of files or folders using the following syntax:
+The executable is located at:
 
-	visdiff <left file or folder> <right file or folder>
+    /Applications/VisualDiffer.app/Contents/Helpers/visdiff
 
-**Note:** On versions older than 1.8.0  `visdiff` is located at `/Applications/VisualDiffer.app/Contents/Resources/visdiff`
+# [Usage](#usage)
 
-[Wait for document close](#wait_for_document_close)
-=======================
+    visdiff [options] <left file or folder> <right file or folder>
 
-If you need to wait until the user closes the diff document window (not necessarily quitting the application) associated with the visdiff command, you can pass the switch `--wait`.
+Left and right must both be files or both be folders.
 
-For example
+# [Options](#options)
+
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>--wait</code></td>
+                <td>Block the terminal until the diff window is closed.
+                    Useful when calling visdiff from a script or editor that needs to wait
+                    for the comparison to finish before continuing.</td>
+            </tr>
+            <tr>
+                <td><code>--focus</code></td>
+                <td>After the diff window is closed, return focus to the application that
+                    launched visdiff (for example, your terminal or editor).
+                    <strong>Only effective when used together with <code>--wait</code>.</strong></td>
+            </tr>
+            <tr>
+                <td><code>--no-warning</code></td>
+                <td>Suppress the sandbox warning printed to stderr on every run.
+                    Useful in scripts where the warning would pollute the output.</td>
+            </tr>
+            <tr>
+                <td><code>--version</code></td>
+                <td>Print the visdiff version and exit.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+## [Using --wait and --focus together](#wait_and_focus)
+
+`--focus` without `--wait` has no effect. The typical use case is integrating visdiff with an editor or script that needs to:
+
+1. open a diff,
+2. wait for the user to close it, and
+3. regain focus automatically when the diff window is closed.
 
 {% highlight bash %}
-$ visdiff ~/original.txt ~/modified.txt --wait
+$ visdiff --wait --focus ~/original.txt ~/modified.txt
 {% endhighlight %}
 
+Without `--focus`, VisualDiffer keeps focus after the window closes. With `--focus`, focus returns to the calling application.
 
-[Creating a symbolic link](#creating_a_symbolic_link)
-------------------------
+# [Creating a Symbolic Link](#creating_a_symbolic_link)
 
-VisualDiffer.app doesn't install the terminal application, but you can manually create the link to the shell command.  
-It requires root access; from a terminal prompt type the command shown below.
+VisualDiffer does not install `visdiff` into a system path automatically (Apple's App Store guidelines do not allow it). You can create the link manually:
 
 {% highlight bash %}
-$ sudo ln -s /Applications/VisualDiffer.app/Contents/Helpers/visdiff /usr/bin/visdiff
+$ sudo ln -s /Applications/VisualDiffer.app/Contents/Helpers/visdiff /usr/local/bin/visdiff
 {% endhighlight %}
 
-<span style="color:red; font-weight:bold">Note:</span> **VisualDiffer can't install the command line tool from its User Interface to comply with Apple's submission guidelines**
+# [Sandbox and Trusted Paths](#macos_sandbox_temporary_files_and_annoying_file_open_panel_prompts)
 
-[macOS sandbox, temporary files and annoying file open panel prompts](#macos_sandbox_temporary_files_and_annoying_file_open_panel_prompts)
-=================================================================
+`visdiff` runs inside the macOS sandbox. The first time it tries to open a path it has not seen before, VisualDiffer may prompt you to confirm access. To avoid repeated prompts, add the relevant paths in **Settings → Trusted Paths**. See [Trusted Paths](trustedPaths.html) for details.
 
-VisualDiffer was sandboxed starting from version 1.4.2 and many users found using it very annoying because any comparison prompts to pick folders/files.  
-This problem was fixed in version 1.4.3 by introducing the so-called "Trusted Paths"; please refer to [Trusted Paths](trustedPaths.html) for further details.
+The sandbox also prints a reminder to stderr on every run. Pass `--no-warning` to silence it once you have set up your trusted paths.
 
-[How visdiff resolves relative paths](#relative_paths)
-========================================================
+# [How visdiff Resolves Relative Paths](#relative_paths)
 
-`visdiff` is a sandboxed application. Because of that, even when you launch it from a regular terminal, relative paths are resolved from the home directory of the sandbox container, not from the current working directory of the shell.
+Because `visdiff` is sandboxed, it cannot read the shell's current working directory directly. Relative paths are resolved against the sandbox container, not against `$PWD`, which means they will likely fail.
 
-This can make VisualDiffer report that a file does not exist because it looks for it in the wrong location.
-
-The most reliable solution is to expand the relative path with `$PWD` so the final path is built from the current working directory before `visdiff` receives it.
+The fix is to prepend `$PWD` to make the path absolute before passing it to visdiff:
 
 Instead of:
 
 {% highlight bash %}
-$ visdiff ../myfile.txt
+$ visdiff ../myfile.txt ~/reference.txt
 {% endhighlight %}
 
 Use:
 
 {% highlight bash %}
-$ visdiff $PWD/../myfile.txt
+$ visdiff $PWD/../myfile.txt ~/reference.txt
 {% endhighlight %}
