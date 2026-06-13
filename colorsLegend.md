@@ -12,86 +12,79 @@ subtitle: Colors and icons used in folder and file comparison views
 
 Folders are shown using different colors to quickly visualize the file comparison results.
 
-<div class="table-wrapper">
-    <table class="alt">
-        <thead>
-            <tr>
-                <th>Folder</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-000.png"></td>
-                <td>Matched folder (all contained files are the same on the other side)</td>
-            </tr>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-001.png"></td>
-                <td>Folder contains only files older than the other side</td>
-            </tr>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-010.png"></td>
-                <td>Folder contains only modified files</td>
-            </tr>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-011.png"></td>
-                <td>Folder contains only modified files and files older than the other side</td>
-            </tr>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-100.png"></td>
-                <td>Folder contains only files not present on the other side (so-called orphan folder)</td>
-            </tr>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-101.png"></td>
-                <td>Folder contains files not present on the other side and files older than the other side</td>
-            </tr>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-110.png"></td>
-                <td>Folder contains modified files and files not present on the other side</td>
-            </tr>
-            <tr>
-                <td><img class="folder-legend" src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-999.png"></td>
-                <td>Folder matches <a href="fileFilters.html#show_filtered_files">file filters</a> or is empty and the 'Empty folders' setting is on</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="folder-legend-grid">
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-000.png" alt="Matched folder">
+    <strong>Matched</strong>
+    <span>All files identical on both sides</span>
+  </div>
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-001.png" alt="Has older files">
+    <strong>Has older</strong>
+    <span>Contains files older than the other side</span>
+  </div>
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-010.png" alt="Modified files">
+    <strong>Modified</strong>
+    <span>Contains modified files</span>
+  </div>
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-011.png" alt="Modified and older files">
+    <strong>Modified + older</strong>
+    <span>Contains modified files and files older than the other side</span>
+  </div>
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-100.png" alt="Orphan folder">
+    <strong>Orphan</strong>
+    <span>Files only on one side</span>
+  </div>
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-101.png" alt="Orphan and older files">
+    <strong>Orphan + older</strong>
+    <span>Orphan files and files older than the other side</span>
+  </div>
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-110.png" alt="Orphan and modified files">
+    <strong>Orphan + modified</strong>
+    <span>Orphan files and modified files</span>
+  </div>
+  <div class="folder-legend-card">
+    <img src="{{ site.prefixDir }}img/screenshots/folder/view/folders/folder-999.png" alt="Filtered or empty folder">
+    <strong>Filtered / Empty</strong>
+    <span>Matches active <a href="fileFilters.html#show_filtered_files">file filters</a> or is empty</span>
+  </div>
 </div>
 
 # [File Colors](#file_colors)
 
 Line colors in the File Differ View are based on differences found.
 
-<div class="table-wrapper">
-    <table class="alt">
-        <thead>
-            <tr>
-                <th>Color</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="file-legend-same"></td>
-                <td>Text content on left and right is the same</td>
-            </tr>
-            <tr>
-                <td class="file-legend-different"></td>
-                <td>Text content present on the left differs from text content present on the right</td>
-            </tr>
-            <tr>
-                <td class="file-legend-missing-left"></td>
-                <td>Text content is present only on the right; on the left the line is missing</td>
-            </tr>
-            <tr>
-                <td class="file-legend-missing-right"></td>
-                <td>Text content is present only on the left; on the right the line is missing</td>
-            </tr>
-            <tr>
-                <td class="file-legend-merged"></td>
-                <td>Text content has been copied from the other side; this marks the document as edited and it can be saved</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="folder-legend-grid">
+  <div class="folder-legend-card">
+    <div class="file-legend-swatch file-legend-same"></div>
+    <strong>Same</strong>
+    <span>Left and right content is identical</span>
+  </div>
+  <div class="folder-legend-card">
+    <div class="file-legend-swatch file-legend-different"></div>
+    <strong>Different</strong>
+    <span>Left content differs from right</span>
+  </div>
+  <div class="folder-legend-card">
+    <div class="file-legend-swatch file-legend-missing-left"></div>
+    <strong>Missing left</strong>
+    <span>Line present only on the right; missing on the left</span>
+  </div>
+  <div class="folder-legend-card">
+    <div class="file-legend-swatch file-legend-missing-right"></div>
+    <strong>Missing right</strong>
+    <span>Line present only on the left; missing on the right</span>
+  </div>
+  <div class="folder-legend-card">
+    <div class="file-legend-swatch file-legend-merged"></div>
+    <strong>Merged</strong>
+    <span>Content copied from the other side; file is marked as edited</span>
+  </div>
 </div>
 
 # [Difference Indicator](#difference_indicator)
