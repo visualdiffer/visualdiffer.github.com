@@ -94,29 +94,109 @@ img.folder-legend {
   max-height: 16px;
 }
 
+.folder-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+  margin: 1.25rem 0;
+}
+
+.folder-legend-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  gap: 8px;
+  background: #f8fafc;
+}
+
+.folder-legend-card img {
+  object-fit: contain;
+}
+
+.folder-legend-card strong {
+  font-size: 0.82rem;
+  color: #1e293b;
+  line-height: 1.3;
+}
+
+.folder-legend-card span {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+td.copy-cmd {
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+
+td.copy-cmd::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 7px;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.15s;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23047857' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2' ry='2'/%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'/%3E%3C/svg%3E");
+}
+
+td.copy-cmd:hover::after {
+  opacity: 1;
+}
+
+td.copy-cmd.copied::after {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
+
+img.wiki-img {
+  max-width: 50%;
+  border: 1px solid #94a3b8;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 3px;
+}
+
 table.file-legend tr td {
   padding: 6px 10px;
 }
 
-td.file-legend-same {
+.file-legend-same {
   background-color: #0f172a;
   color: #e2e8f0;
 }
 
-td.file-legend-different {
+.file-legend-different {
   background-color: #d1fadf;
 }
 
-td.file-legend-missing-left {
+.file-legend-missing-left {
   background-color: #e0f2fe;
 }
 
-td.file-legend-missing-right {
+.file-legend-missing-right {
   background-color: #fef9c3;
 }
 
-td.file-legend-merged {
+.file-legend-merged {
   background-color: #fef3c7;
+}
+
+.file-legend-swatch {
+  width: 100%;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
 #main a[href^="https://"]::before,

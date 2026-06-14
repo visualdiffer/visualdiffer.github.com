@@ -41,7 +41,7 @@ Show a symbol near the lines to indicate the type of difference.
     </table>
 </div>
 
-![image]({{ page.prefixDir }}{{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/differenceIndicator.png)
+![image]({{ page.prefixDir }}{{ site.prefixDir }}img/screenshots/file/differenceIndicator.png)
 
 # Tab Width
 

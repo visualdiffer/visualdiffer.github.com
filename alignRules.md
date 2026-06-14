@@ -142,7 +142,7 @@ This can be achieved using VisualDiffer 'user-defined alignment rules'.
 
 You can create, edit or delete rules from Session Preferences Dialog
 
-![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/sessionPrefAlignment.png)
+![image]({{ site.prefixDir }}img/screenshots/folder/align/main.png){:.wiki-img}
 
 More rules can be assigned to a VisualDiffer session comparison; they are evaluated from top to bottom.
 
@@ -150,7 +150,7 @@ More rules can be assigned to a VisualDiffer session comparison; they are evalua
 
 When you add a new rule (or edit an existing one) you access the dialog shown below
 
-![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/alignRule.png) 
+![image]({{ site.prefixDir }}img/screenshots/folder/align/rule.png){:.wiki-img}
 
 A rule has
 
@@ -199,7 +199,7 @@ Now if you save the rule and then run the comparison you obtain the result shown
 
 But `002.jpg` and `002.RAW` files are not aligned because the `002.RAW` extension is uppercase; this can be easily fixed by ignoring the case on the right expression as shown in the figure below
 
-![image]({{ site.prefixDir }}img/ternaryop/vd/screenshots/wiki/alignRuleIgnoreCase.png)
+![image]({{ site.prefixDir }}img/screenshots/folder/align/ruleIgnoreCase.png){:.wiki-img}
 
 ## [Test Rule](#test_rule)
 
