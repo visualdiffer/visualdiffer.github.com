@@ -1557,6 +1557,32 @@ img.folder-legend {
   color: #64748b;
   line-height: 1.4;
 }
+td.copy-cmd {
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+td.copy-cmd::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 7px;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.15s;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23047857' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2' ry='2'/%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'/%3E%3C/svg%3E");
+}
+td.copy-cmd:hover::after {
+  opacity: 1;
+}
+td.copy-cmd.copied::after {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
 img.wiki-img {
   max-width: 50%;
   border: 1px solid #94a3b8;

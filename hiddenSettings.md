@@ -4,43 +4,113 @@ layout: default
 
 # mainAnchor is used by Apple links
 mainAnchor: hiddenSettings
-title: Hidden settings
+title: Hidden Settings
 subtitle: Settings not yet available from the preferences panel
 ---
 
-Hidden settings
-===
+Some settings are not exposed in the Preferences panel and must be configured from the terminal using the `defaults` command.
 
-Some settings aren't available from the preferences panel and must be set from the CLI.
+**General pattern**
 
-Comparison completed notification
---
+    defaults write com.visualdiffer <key> <value>
 
-`showNotificationWhenWindowIsOnFront` (`boolean`, default `false`)
+**Reset to default**
 
-If `true` the notification is always shown, otherwise only when the application window isn't in the foreground.
+    defaults delete com.visualdiffer <key>
 
-    defaults write com.visualdiffer showNotificationWhenWindowIsOnFront true
+Changes take effect the next time the application is launched.
 
-Customize the file date/time format in Folder Differ View
---
+# [Settings](#settings)
 
-`folderViewDateFormat` (`string`, default taken from system locale settings)
+Click any row in the **Example** column to copy the full command to the clipboard.
 
-It is possible to change how time is shown in the Folder Differ View.
-
-Change format
--------------
-Open the terminal application and type:
-
-    defaults write com.visualdiffer folderViewDateFormat HHmmss
-
-The example above sets the format to show only the time (without date); format patterns can be found at [Unicode Technical Standard #35](https://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns).
-
-Restore default value
-===
-
-At any time it is possible to restore the default value by deleting the key:
-
-    defaults delete com.visualdiffer showNotificationWhenWindowIsOnFront
-    defaults delete com.visualdiffer folderViewDateFormat
+<div class="table-wrapper">
+    <table class="alt">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>alwaysResolveSymlinks</code></td>
+                <td>YES</td>
+                <td>Resolve symbolic links when determining file paths.</td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer alwaysResolveSymlinks -bool false">
+                    <code>-bool false</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>colorsConfigPath</code></td>
+                <td>—</td>
+                <td>Path to a JSON file containing a custom color configuration.
+                    Recommended location: <code>~/Library/Application Scripts/com.visualdiffer</code></td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer colorsConfigPath &quot;/Users/&lt;&lt;username&gt;&gt;/Library/Application Scripts/com.visualdiffer/vd-colors.json&quot;">
+                    <code>"/path/to/vd-colors.json"</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>defaultEncoding</code></td>
+                <td>UTF-8</td>
+                <td>Default character encoding for opening text files.
+                    The value is the <code>CFStringEncoding</code> integer identifier.</td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer defaultEncoding -int 30">
+                    <code>-int 30</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>filesStatusBarShowMessageTimeout</code></td>
+                <td>3</td>
+                <td>Seconds a status bar message stays visible in the file diff view before the counters are restored.</td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer filesStatusBarShowMessageTimeout -int 5">
+                    <code>-int 5</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>foldersDifferenceNavigatorCenterInWindow</code></td>
+                <td>YES</td>
+                <td>Center the selected difference in the folder comparison window when navigating.</td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer foldersDifferenceNavigatorCenterInWindow -bool false">
+                    <code>-bool false</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>folderViewDateFormat</code></td>
+                <td><code>ddMMyyHHmmss</code></td>
+                <td>Date and time format used in the folder diff view.
+                    Pattern syntax: <a href="https://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns">Unicode Technical Standard #35</a></td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer folderViewDateFormat HHmmss">
+                    <code>HHmmss</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>showNotificationWhenWindowIsOnFront</code></td>
+                <td>NO</td>
+                <td>When <code>NO</code>, completion notifications are shown only when the app is in the background.
+                    When <code>YES</code>, notifications are always shown.</td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer showNotificationWhenWindowIsOnFront -bool true">
+                    <code>-bool true</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>showRecentDocumentsList</code></td>
+                <td>NO</td>
+                <td>Show the Recent Documents popup menu on the main window.</td>
+                <td class="copy-cmd"
+                    data-cmd="defaults write com.visualdiffer showRecentDocumentsList -bool true">
+                    <code>-bool true</code>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
