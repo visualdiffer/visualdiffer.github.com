@@ -160,11 +160,17 @@ td.copy-cmd.copied::after {
 }
 
 img.wiki-img {
-  max-width: 50%;
+  max-width: 100%;
   border: 1px solid #94a3b8;
   border-radius: 4px;
   background-color: #fff;
   padding: 3px;
+}
+
+@media (min-width: 768px) {
+  img.wiki-img {
+    max-width: 50%;
+  }
 }
 
 table.file-legend tr td {
