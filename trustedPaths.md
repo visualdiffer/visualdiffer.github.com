@@ -19,24 +19,37 @@ VisualDiffer prompts a file panel when it can't access a file due to a permissio
 [Using VisualDiffer as external diff tool with sandbox](#using_visualdiffer_as_external_diff_tool_with_sandbox)
 =====================================================
 
-VisualDiffer can be used to compare files using other applications, for example to compare a remote file version with the local one.
+Other applications can use VisualDiffer to compare files, for example, to compare a remote version of a file with its local version.
 
-Applications like Dreamweaver save the remote version to a temporary file and then pass the generated full path to VisualDiffer, but this path isn't trusted, so VisualDiffer shows the file panel every time.
+An application can save the remote version to a temporary file and then pass its full path to VisualDiffer. However, the path is not trusted, so VisualDiffer displays the file panel every time.
 
-This behaviour generates a very frustrating user experience because the user must select the file from the panel again and again.
+This behavior can be frustrating because you must select the file from the panel repeatedly.
 
 [Use Trusted Paths](#use_trusted_paths)
 =================
 
-Trusted paths resolve this problem because applications save files in their own specific temporary folders; for example SourceTree can generate the following path:
+Trusted paths solve this problem because applications save files in their own temporary folders. For example, an application can generate the following path:
 
 	/var/folders/mr/5dfd6w717cj5j374q24fdxsh0000gn/T/2PhpDQ_UnifiedDiff.m
 
-but trusting it works only once because the path component **5dfd6w717cj5j374q24fdxsh0000gn/T/** is randomly generated and changes every time.
+Trusting this path works only once because the **5dfd6w717cj5j374q24fdxsh0000gn/T/** path component is generated randomly and changes every time.
 
-We can trust **/var/folders**, which is the root used by SourceTree to save temporary files.
+Instead, you can trust **/var/folders**, the root directory used to save temporary files.
 
-Trusting **/var/folders** ensures every path generated inside it (at any deeper subfolder level) doesn't require any additional user permission and the file panel prompts no longer appear.
+Trusting **/var/folders** ensures that paths generated anywhere inside it do not require additional permission, preventing further file panel prompts.
+
+[Trust the File System from the Root (`/`)?](#trust_high_level)
+=============================
+
+Integrating VisualDiffer with [Finder](finder.html) through Services or Quick Actions can make the user experience even more frustrating. The items you want to compare can be located anywhere, either on the main disk or on external disks under `/Volumes/`, causing the file selection panel to appear repeatedly.
+
+You may wonder, “I have just selected this path in Finder, so why am I being asked to open it?” This behavior is required by the sandbox. Finder and VisualDiffer are separate processes, and trusted paths cannot be transferred between them.
+
+### [Workaround](#trusted_workaround)
+
+⚠️ This workaround is not a complete solution. You can manually add a high-level directory, such as `/Volumes` or `/`, to Trusted Paths. Every path below that directory will then be accessible without requiring you to select it.
+
+Use this workaround only if you understand that it grants VisualDiffer access to everything below the selected directory. VisualDiffer does not send or index data, and it performs file operations only when explicitly initiated by the user, so this approach can be considered “safe.”
 
 [Where to configure Trusted Paths](#where_configure_trusted_paths)
 =============================
