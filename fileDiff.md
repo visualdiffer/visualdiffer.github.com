@@ -82,7 +82,7 @@ A *section* is a contiguous block of differing lines. Two shortcuts in the Edit 
 
 # [Show Details](#show_details)
 
-**View → Show Details** opens a panel below the diff tables that shows the selected line at character level, highlighting exactly which characters differ. Hide it again from the same menu item or from the right-click menu inside the panel.
+**View → Show Details** opens a panel below the diff tables that shows the selected line. Hide it again from the same menu item or from the right-click menu inside the panel.
 
 > **Line-ending characters are always shown in the Details panel**, even when Show Whitespace is off. Unix lines end with **¶**, DOS lines end with **¤**. This makes it easy to identify the source of a difference that looks identical at first glance.
 
