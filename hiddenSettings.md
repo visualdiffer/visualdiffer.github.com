@@ -114,3 +114,24 @@ Click any row in the **Example** column to copy the full command to the clipboar
         </tbody>
     </table>
 </div>
+
+# [How to Use a Custom Color Scheme](#install_theme)
+
+**Installation**
+
+Use the [Color Scheme Editor](https://visualdiffer.com/colors.html) to create a custom color scheme, then download the JSON file. For example, save the file as `~/Downloads/my-scheme.json`.
+
+Open Terminal and run the following commands. The first command copies the file to a directory that the VisualDiffer sandbox can access.
+
+```sh
+cp ~/Downloads/my-scheme.json ~/Library/Application\ Scripts/com.visualdiffer
+defaults write com.visualdiffer colorsConfigPath ~/Library/Application\ Scripts/com.visualdiffer/my-scheme.json
+```
+
+**Restore the Default Setting**
+
+To stop using the custom color scheme, run the following command:
+
+```sh
+defaults delete com.visualdiffer colorsConfigPath
+```
