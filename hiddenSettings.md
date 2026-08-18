@@ -128,6 +128,8 @@ cp ~/Downloads/my-scheme.json ~/Library/Application\ Scripts/com.visualdiffer
 defaults write com.visualdiffer colorsConfigPath ~/Library/Application\ Scripts/com.visualdiffer/my-scheme.json
 ```
 
+Changes to the color scheme take effect only after you restart VisualDiffer.
+
 **Restore the Default Setting**
 
 To stop using the custom color scheme, run the following command:
