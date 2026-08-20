@@ -121,14 +121,23 @@ Click any row in the **Example** column to copy the full command to the clipboar
 
 Use the [Color Scheme Editor](https://visualdiffer.com/colors.html) to create a custom color scheme, then download the JSON file. For example, save the file as `~/Downloads/my-scheme.json`.
 
-Open Terminal and run the following commands. The first command copies the file to a directory that the VisualDiffer sandbox can access.
+Open Terminal and run the following commands.
+
+Copy the file to a directory that the VisualDiffer sandbox can access.
 
 ```sh
 cp ~/Downloads/my-scheme.json ~/Library/Application\ Scripts/com.visualdiffer
+```
+
+Set the `colorsConfigPath` property to the full path of the copied file.
+
+```sh
 defaults write com.visualdiffer colorsConfigPath ~/Library/Application\ Scripts/com.visualdiffer/my-scheme.json
 ```
 
 Changes to the color scheme take effect only after you restart VisualDiffer.
+
+Custom color schemes do not respond to changes between Light and Dark appearances. If you switch the appearance, the custom color scheme remains active.
 
 **Restore the Default Setting**
 

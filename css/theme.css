@@ -1583,6 +1583,47 @@ td.copy-cmd.copied::after {
   opacity: 1;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
 }
+#main .code-block {
+  position: relative;
+  margin: 1.7142857em 0;
+}
+#main .code-block pre {
+  margin: 0;
+  padding-right: 3rem;
+}
+.copy-code-button {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e2e8f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2' ry='2'/%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.code-block:hover .copy-code-button, .copy-code-button:focus-visible {
+  opacity: 1;
+}
+.copy-code-button:focus-visible {
+  outline: 2px solid #e2e8f0;
+  outline-offset: 2px;
+}
+.copy-code-button.copied {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e2e8f0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
+@media (hover: none) {
+  .copy-code-button {
+    opacity: 1;
+  }
+}
 img.wiki-img {
   max-width: 100%;
   border: 1px solid #94a3b8;
