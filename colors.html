@@ -1,0 +1,1975 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Create, preview, and download custom VisualDiffer color schemes.">
+<title>VisualDiffer — Color Scheme Editor</title>
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #f1f3f7;
+    --surface: #ffffff;
+    --surface-2: #f7f9fc;
+    --surface-3: #eef1f6;
+    --border: #d9e0ea;
+    --border-strong: #c3ccd9;
+    --text: #1b2330;
+    --muted: #667588;
+    --accent: #059669;
+    --accent-soft: #ecfdf3;
+    --shadow: 0 1px 2px rgba(20, 30, 50, .06), 0 8px 24px rgba(20, 30, 50, .08);
+    --mono: ui-monospace, Menlo, "SF Mono", Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0e1116;
+        --surface: #161b22;
+        --surface-2: #1b212a;
+        --surface-3: #212936;
+        --border: #2a323f;
+        --border-strong: #3a4552;
+        --text: #e6ebf2;
+        --muted: #93a1b3;
+        --accent: #34d399;
+        --accent-soft: #064e3b;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 30px rgba(0, 0, 0, .35);
+    }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font: 13px/1.45 "Manrope", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, select { font: inherit; color: inherit; }
+
+:where(a, button, input, select, summary):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------------- top bar ---------------- */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 18px;
+    padding: 14px 20px;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: auto;
+}
+
+.logo {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #d1fadf;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+}
+
+.logo img {
+    display: block;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+.brand h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand h1 a:hover { text-decoration: underline; }
+
+.brand p {
+    margin: 2px 0 0;
+    font-size: 11.5px;
+    color: var(--muted);
+}
+
+.brand code {
+    font-family: var(--mono);
+    font-size: 11px;
+}
+
+.bar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field > span {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--muted);
+}
+
+.field input, .field select {
+    height: 30px;
+    padding: 0 8px;
+    border: 1px solid var(--border-strong);
+    border-radius: 7px;
+    background: var(--surface-2);
+    min-width: 150px;
+}
+
+.btn {
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 7px;
+    background: var(--surface-2);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn:hover { background: var(--surface-3); }
+.btn:active { transform: translateY(1px); }
+
+.btn.primary {
+    border-color: transparent;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn.primary:hover { filter: brightness(1.07); }
+
+.btn.ghost { background: transparent; }
+
+.btn.small { height: 26px; padding: 0 9px; font-size: 12px; }
+
+.seg {
+    display: inline-flex;
+    padding: 2px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: var(--surface-2);
+}
+
+.seg button {
+    border: 0;
+    background: transparent;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+.seg button[aria-pressed="true"] {
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .18);
+    font-weight: 600;
+}
+
+/* ---------------- layout ---------------- */
+
+.layout {
+    display: grid;
+    grid-template-columns: 400px minmax(0, 1fr);
+    gap: 18px;
+    padding: 18px 20px 40px;
+    align-items: start;
+}
+
+@media (max-width: 1180px) {
+    .layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+.sidebar {
+    position: sticky;
+    top: 82px;
+    max-height: calc(100vh - 100px);
+    overflow: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+@media (max-width: 1180px) {
+    .sidebar { position: static; max-height: none; }
+}
+
+.sidebar-head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-head input {
+    flex: 1;
+    height: 28px;
+    padding: 0 9px;
+    border: 1px solid var(--border-strong);
+    border-radius: 7px;
+    background: var(--surface-2);
+}
+
+.group { border-bottom: 1px solid var(--border); }
+.group:last-child { border-bottom: 0; }
+.group[hidden] { display: none; }
+
+.group > summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+    background: var(--surface-2);
+    list-style: none;
+}
+
+.group > summary::-webkit-details-marker { display: none; }
+
+.group > summary::before {
+    content: "▸";
+    color: var(--muted);
+    font-size: 10px;
+    transition: transform .15s;
+}
+
+.group[open] > summary::before { transform: rotate(90deg); }
+
+.group .count {
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--mono);
+}
+
+.entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.entry[hidden] { display: none; }
+.entry:hover { background: var(--surface-2); }
+
+.entry.pulse { animation: pulse 1.1s ease-out; }
+
+@keyframes pulse {
+    0%, 45% { background: var(--accent-soft); }
+    100% { background: transparent; }
+}
+
+.entry-label {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.entry-label b {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.entry-label .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+}
+
+.entry.modified .entry-label .dot { opacity: 1; }
+
+.entry-label small {
+    color: var(--muted);
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.entry-label code {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+}
+
+.swatch {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 8px 4px 5px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: var(--surface-2);
+    cursor: pointer;
+    min-width: 116px;
+}
+
+.swatch:hover { border-color: var(--accent); }
+.swatch.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.swatch.unused { opacity: .5; }
+
+.chip {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    flex: 0 0 auto;
+    border: 1px solid rgba(0, 0, 0, .25);
+    background-image:
+        linear-gradient(45deg, #bbb 25%, transparent 25%, transparent 75%, #bbb 75%),
+        linear-gradient(45deg, #bbb 25%, transparent 25%, transparent 75%, #bbb 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.chip::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--chip-color, transparent);
+}
+
+.swatch-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.25;
+    min-width: 0;
+}
+
+.swatch-meta span {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--muted);
+}
+
+.swatch-meta b {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+}
+
+/* ---------------- previews ---------------- */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.card > header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+}
+
+.card > header h2 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.card > header p {
+    margin: 0;
+    font-size: 11.5px;
+    color: var(--muted);
+}
+
+.card-body { padding: 14px 16px 18px; }
+
+/* the app canvas: the base color is the table background of the chosen appearance */
+.preview {
+    background: var(--canvas, #ffffff);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 12px;
+}
+
+[data-c] { cursor: pointer; }
+
+[data-c].hl {
+    outline: 2px solid var(--accent);
+    outline-offset: 0;
+    animation: flash .9s ease-out;
+}
+
+@keyframes flash {
+    0% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 45%, transparent); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* folder differ */
+
+.fd-panels {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+}
+
+.fd-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 84px 128px;
+    gap: 0;
+    padding: 4px 8px;
+    font-family: -apple-system, sans-serif;
+    font-size: 10.5px;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface-3);
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.fd-head span:nth-child(2), .fd-head span:nth-child(3) { text-align: right; }
+
+.fd-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 84px 128px;
+    align-items: center;
+    height: 21px;
+}
+
+.fd-row > span {
+    padding: 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fd-row .c-size, .fd-row .c-date { text-align: right; font-size: 11px; }
+
+.fd-row .c-name { padding-left: 4px; }
+
+/* file differ */
+
+.fl-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+    gap: 8px;
+    align-items: stretch;
+}
+
+.fl-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 40px 1px minmax(0, 1fr);
+    height: 21px;
+    align-items: stretch;
+}
+
+.fl-row .ln {
+    text-align: right;
+    padding-right: 6px;
+    font-size: 11px;
+    line-height: 21px;
+    overflow: hidden;
+}
+
+.fl-row .gsep { width: 1px; }
+
+.fl-row .code {
+    line-height: 21px;
+    padding-left: 6px;
+    white-space: pre;
+    overflow: hidden;
+}
+
+.fl-row .code.missing {
+    background-image: repeating-linear-gradient(135deg,
+        var(--fl-missing-b) 0 2px, transparent 2px 7px);
+}
+
+.fl-row .secsep {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    z-index: 3;
+}
+
+.fl-row .inline { border-radius: 2px; }
+
+.thumb {
+    position: relative;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    overflow: hidden;
+    align-self: stretch;
+}
+
+.thumb .tsec {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+}
+
+.thumb .tsec i { flex: 1; }
+
+.thumb .posbox {
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    border: 2px solid transparent;
+    border-radius: 2px;
+}
+
+/* console */
+
+.console {
+    padding: 6px 8px;
+    line-height: 1.7;
+}
+
+.console div { padding: 0 4px; }
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 12px;
+    font-size: 11.5px;
+    color: var(--muted);
+}
+
+/* json */
+
+.json-body { padding: 0; }
+
+pre#jsonOut {
+    margin: 0;
+    padding: 14px 16px;
+    max-height: 340px;
+    overflow: auto;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    background: var(--surface-2);
+}
+
+.json-toolbar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+}
+
+.json-toolbar .hint { font-size: 11.5px; color: var(--muted); margin-left: auto; }
+
+.install-help {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    margin: 18px 20px 0;
+    padding: 13px 16px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+    border-radius: 12px;
+    background: var(--accent-soft);
+    box-shadow: var(--shadow);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.install-help a {
+    color: var(--text);
+    font-weight: 700;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+
+/* ---------------- popover ---------------- */
+
+.popover {
+    position: fixed;
+    z-index: 100;
+    width: 268px;
+    padding: 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.popover[hidden] { display: none; }
+
+.popover h3 {
+    margin: 0 0 2px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.popover .pv-sub {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.popover input[type="color"] {
+    width: 100%;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: var(--surface-2);
+    cursor: pointer;
+}
+
+.pv-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.pv-line label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--muted);
+    width: 40px;
+}
+
+.pv-line input[type="range"] { flex: 1; accent-color: var(--accent); }
+
+.pv-line input[type="text"], .pv-line input[type="number"] {
+    height: 27px;
+    padding: 0 7px;
+    border: 1px solid var(--border-strong);
+    border-radius: 7px;
+    background: var(--surface-2);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    min-width: 0;
+    flex: 1;
+}
+
+.pv-line input.bad { border-color: #e05252; }
+
+.pv-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.pv-buttons .btn { height: 25px; padding: 0 8px; font-size: 11px; }
+.pv-buttons .btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+
+.pv-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+
+.pv-palette button {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pv-foot {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.pv-foot .btn { flex: 1; justify-content: center; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <a class="logo" href="index.html" aria-label="Open the VisualDiffer documentation home"><img src="img/logo.png" alt=""></a>
+        <div>
+            <h1><a href="https://visualdiffer.com">VisualDiffer</a> — Color Scheme Editor</h1>
+            <p>Start with a built-in color scheme, adjust it in the live previews, then download the <code>colors.json</code> file.</p>
+        </div>
+    </div>
+
+    <div class="bar-actions">
+        <label class="field">
+            <span>Scheme name</span>
+            <input id="schemeName" type="text" spellcheck="false">
+        </label>
+        <label class="field">
+            <span>Template</span>
+            <select id="templateSelect"></select>
+        </label>
+        <button id="newScheme" class="btn">New scheme</button>
+        <div class="field">
+            <span>Preview appearance</span>
+            <div class="seg" id="appearanceSeg">
+                <button type="button" data-appearance="light">Light</button>
+                <button type="button" data-appearance="dark">Dark</button>
+            </div>
+        </div>
+        <button id="importBtn" class="btn ghost">Import…</button>
+        <input id="importFile" type="file" accept=".json,application/json" hidden>
+        <button id="exportBtn" class="btn primary">Download JSON</button>
+    </div>
+</header>
+
+<aside class="install-help" aria-label="Color scheme installation help">
+    <strong>Using your color scheme:</strong>
+    <span>To use this color scheme in VisualDiffer, follow the <a href="hiddenSettings.html#how_to_use_a_custom_color_scheme" target="_blank" rel="noopener" aria-label="Custom color scheme installation instructions (opens in a new tab)">custom color scheme installation instructions</a>.</span>
+</aside>
+
+<main class="layout">
+    <aside class="sidebar">
+        <div class="sidebar-head">
+            <input id="filter" type="search" placeholder="Filter colors…" spellcheck="false">
+            <button id="resetAll" class="btn ghost small">Reset all</button>
+        </div>
+        <div id="groups"></div>
+    </aside>
+
+    <section class="content" id="previewRoot">
+        <div class="card">
+            <header>
+                <h2>Folder differ</h2>
+                <p>Icons are omitted from this text-only preview. Select any colored element to locate its setting.</p>
+            </header>
+            <div class="card-body">
+                <div class="fd-panels" id="folderPanels"></div>
+                <div class="legend">
+                    <span>Folder rows retain the canvas background. Only file and filtered rows use a fill color.</span>
+                    <span>Folder sizes use the <b>Folder size</b> color.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <header>
+                <h2>File differ</h2>
+                <p>Preview line numbers, the gutter separator, hatched missing lines, inline highlights, and the thumbnail position box.</p>
+            </header>
+            <div class="card-body">
+                <div class="fl-wrap" id="filePanels"></div>
+                <div class="legend">
+                    <span>Selected rows retain their status text color.</span>
+                    <span>Thumbnail blocks use the <b>text</b> color from each side.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <header><h2>Console log</h2></header>
+            <div class="card-body">
+                <div class="preview console" id="consolePreview"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <header>
+                <h2>colors.json</h2>
+                <p>Uses the same structure as the bundled files.</p>
+            </header>
+            <div class="json-body">
+                <pre id="jsonOut"></pre>
+                <div class="json-toolbar">
+                    <button id="copyJson" class="btn small">Copy to clipboard</button>
+                    <button id="exportBtn2" class="btn small primary">Download JSON</button>
+                    <span class="hint">Values can use hexadecimal <code>#rgb</code>, <code>#rrggbb</code>, or <code>#rrggbbaa</code> notation, or the dynamic <code>textForeground</code> and <code>textBackground</code> values.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="popover" class="popover" hidden>
+    <h3 id="pvTitle">—</h3>
+    <p class="pv-sub" id="pvSub">—</p>
+    <input type="color" id="pvColor">
+    <div class="pv-line">
+        <label for="pvAlpha">Alpha</label>
+        <input type="range" id="pvAlpha" min="0" max="255" step="1">
+        <input type="number" id="pvAlphaNum" min="0" max="255" step="1" style="flex:0 0 62px">
+    </div>
+    <div class="pv-line">
+        <label for="pvHex">Value</label>
+        <input type="text" id="pvHex" spellcheck="false">
+    </div>
+    <div class="pv-buttons">
+        <button type="button" class="btn" data-special="textForeground">textForeground</button>
+        <button type="button" class="btn" data-special="textBackground">textBackground</button>
+        <button type="button" class="btn" data-special="transparent">Transparent</button>
+    </div>
+    <div class="pv-palette" id="pvPalette"></div>
+    <div class="pv-foot">
+        <button type="button" class="btn" id="pvReset">Template value</button>
+        <button type="button" class="btn" id="pvClose">Done</button>
+    </div>
+</div>
+
+<script>
+"use strict";
+
+/* ------------------------------------------------------------------ *
+ * embedded templates: verbatim copies of AppDefaults/colors.json and *
+ * AppDefaults/colorsDark.json                                        *
+ * ------------------------------------------------------------------ */
+
+const TEMPLATES = {
+    light: {
+        label: "Light (colors.json)",
+        appearance: "light",
+        data: {
+            consoleLogColorsMap: {
+                info: { textColor: "textForeground", backgroundColor: "textBackground" },
+                warning: { textColor: "#967e35", backgroundColor: "textBackground" },
+                error: { textColor: "#FF0000", backgroundColor: "textBackground" }
+            },
+            folderColorsMap: {
+                old: { textColor: "#000", backgroundColor: "#edeeed" },
+                newer: { textColor: "#7B00CC", backgroundColor: "#ead8f6" },
+                orphan: { textColor: "#002a90", backgroundColor: "#dde7f7" },
+                changed: { textColor: "#da0000", backgroundColor: "#ffd3cc" },
+                same: { textColor: "#190000", backgroundColor: "#00000000" },
+                folder: { textColor: "#190000", backgroundColor: "#00000000" },
+                subFoldersSize: { textColor: "#9A9A9A", backgroundColor: "#00000000" },
+                filtered: { textColor: "#4a7c59", backgroundColor: "#e4f1d5" },
+                mismatchingTags: { textColor: "#AA0D91", backgroundColor: "#00000000" },
+                mismatchingLabels: { textColor: "#AA0D91", backgroundColor: "#00000000" },
+                selectedRow: { textColor: "#00000000", backgroundColor: "#CCFFCC" }
+            },
+            fileColorsMap: {
+                changed: { textColor: "#4a7c59", backgroundColor: "#e4f1d5" },
+                changedInline: { textColor: "#c81e3a", backgroundColor: "#f5d6db" },
+                added: { textColor: "#0000FF", backgroundColor: "#DCE5F5" },
+                deleted: { textColor: "#da0000", backgroundColor: "#ffd3cc" },
+                same: { textColor: "textForeground", backgroundColor: "textBackground" },
+                missing: { textColor: "#FFFFFFFF", backgroundColor: "#000000" },
+                merged: { textColor: "#000000", backgroundColor: "#FFCC00" },
+                thumbnail: { textColor: "#00000000", backgroundColor: "#FFFFFFFF" },
+                positionBox: { textColor: "#00000000", backgroundColor: "#FF9900" },
+                selectedRow: { textColor: "#00000000", backgroundColor: "#CCFFCC" },
+                sectionSeparatorLine: { textColor: "#000000", backgroundColor: "#00000000" },
+                lineNumber: { textColor: "#444444", backgroundColor: "#00000000" },
+                lineNumberSeparator: { textColor: "#aaaaaa", backgroundColor: "#00000000" }
+            }
+        }
+    },
+    dark: {
+        label: "Dark (colorsDark.json)",
+        appearance: "dark",
+        data: {
+            consoleLogColorsMap: {
+                info: { textColor: "textForeground", backgroundColor: "textBackground" },
+                warning: { textColor: "#967e35", backgroundColor: "textBackground" },
+                error: { textColor: "#ed3930", backgroundColor: "textBackground" }
+            },
+            folderColorsMap: {
+                old: { textColor: "#A7A7A7", backgroundColor: "#00000000" },
+                newer: { textColor: "#f78c6c", backgroundColor: "#00000000" },
+                orphan: { textColor: "#82aaff", backgroundColor: "#00000000" },
+                changed: { textColor: "#ff4545", backgroundColor: "#00000000" },
+                same: { textColor: "textForeground", backgroundColor: "textBackground" },
+                folder: { textColor: "textForeground", backgroundColor: "textBackground" },
+                subFoldersSize: { textColor: "#9A9A9A", backgroundColor: "#00000000" },
+                filtered: { textColor: "#A8C023", backgroundColor: "#00000000" },
+                mismatchingTags: { textColor: "#f39c12", backgroundColor: "#00000000" },
+                mismatchingLabels: { textColor: "#f39c12", backgroundColor: "#00000000" },
+                selectedRow: { textColor: "#00000000", backgroundColor: "#525146" }
+            },
+            fileColorsMap: {
+                changed: { textColor: "#C4EFB7", backgroundColor: "#2E4A38" },
+                changedInline: { textColor: "#FFC24B", backgroundColor: "#2E4A38" },
+                added: { textColor: "#70D7EA", backgroundColor: "#577271" },
+                deleted: { textColor: "#e92875", backgroundColor: "#FFD0D0" },
+                same: { textColor: "#FFFFFF", backgroundColor: "#00000000" },
+                missing: { textColor: "#555555", backgroundColor: "#FFFFFF" },
+                merged: { textColor: "#000000", backgroundColor: "#FFCC00" },
+                thumbnail: { textColor: "#00000000", backgroundColor: "#555555" },
+                positionBox: { textColor: "#00000000", backgroundColor: "#FF9900" },
+                selectedRow: { textColor: "#00000000", backgroundColor: "#525146" },
+                sectionSeparatorLine: { textColor: "#ffffff", backgroundColor: "#00000000" },
+                lineNumber: { textColor: "textForeground", backgroundColor: "#00000000" },
+                lineNumberSeparator: { textColor: "#ffffff", backgroundColor: "#00000000" }
+            }
+        }
+    }
+};
+
+/* ------------------------------------------------------------------ *
+ * metadata: label, hint and which of the two colors the app reads    *
+ * ------------------------------------------------------------------ */
+
+const BOTH = ["textColor", "backgroundColor"];
+
+const META = [
+    {
+        key: "folderColorsMap", prefix: "fd", title: "Folder differ",
+        entries: [
+            { key: "old", label: "Older", hint: "side holding the older copy", fields: BOTH, use: "both" },
+            { key: "newer", label: "Newer", hint: "side holding the newer copy", fields: BOTH, use: "both" },
+            { key: "orphan", label: "Orphan", hint: "item present on one side only", fields: BOTH, use: "both" },
+            { key: "changed", label: "Changed", hint: "content differs", fields: BOTH, use: "both" },
+            { key: "same", label: "Identical", hint: "same content on both sides", fields: BOTH, use: "both" },
+            { key: "folder", label: "Folder", hint: "folder rows are never filled", fields: BOTH, use: "text" },
+            { key: "subFoldersSize", label: "Folder size", hint: "size column of a folder row", fields: BOTH, use: "text" },
+            { key: "filtered", label: "Filtered", hint: "excluded by the filters", fields: BOTH, use: "both" },
+            { key: "mismatchingTags", label: "Mismatching tags", hint: "Finder tags differ", fields: BOTH, use: "both" },
+            { key: "mismatchingLabels", label: "Mismatching labels", hint: "Finder label differs", fields: BOTH, use: "both" },
+            { key: "selectedRow", label: "Selected row", hint: "background only; text retains its status color", fields: BOTH, use: "bg" }
+        ]
+    },
+    {
+        key: "fileColorsMap", prefix: "fl", title: "File differ",
+        entries: [
+            { key: "changed", label: "Changed line", hint: "line modified on both sides", fields: BOTH, use: "both" },
+            { key: "changedInline", label: "Inline difference", hint: "characters that differ inside a changed line", fields: BOTH, use: "both" },
+            { key: "added", label: "Added line", fields: BOTH, use: "both" },
+            { key: "deleted", label: "Deleted line", fields: BOTH, use: "both" },
+            { key: "same", label: "Identical line", fields: BOTH, use: "both" },
+            { key: "missing", label: "Missing line", hint: "background tints the hatch pattern", fields: BOTH, use: "bg" },
+            { key: "merged", label: "Merged line", hint: "line written by a merge", fields: BOTH, use: "both" },
+            { key: "thumbnail", label: "Thumbnail", hint: "background of the mini map", fields: BOTH, use: "bg" },
+            { key: "positionBox", label: "Position box", hint: "2px frame of the visible region", fields: BOTH, use: "bg" },
+            { key: "selectedRow", label: "Selected row", hint: "background only", fields: BOTH, use: "bg" },
+            { key: "sectionSeparatorLine", label: "Section separator", hint: "line above the first row of a section", fields: BOTH, use: "text" },
+            { key: "lineNumber", label: "Line number", hint: "gutter numbers", fields: BOTH, use: "text" },
+            { key: "lineNumberSeparator", label: "Gutter separator", hint: "vertical line after the numbers", fields: BOTH, use: "text" }
+        ]
+    },
+    {
+        key: "consoleLogColorsMap", prefix: "cs", title: "Console log",
+        entries: [
+            { key: "info", label: "Info", fields: BOTH, use: "both" },
+            { key: "warning", label: "Warning", fields: BOTH, use: "both" },
+            { key: "error", label: "Error", fields: BOTH, use: "both" }
+        ]
+    }
+];
+
+// the bundled files list the maps in this order
+const EXPORT_ORDER = ["consoleLogColorsMap", "folderColorsMap", "fileColorsMap"];
+
+const SYSTEM_COLORS = {
+    textForeground: { light: "#000000", dark: "#ffffff" },
+    textBackground: { light: "#ffffff", dark: "#1e1e1e" }
+};
+
+// NSTableView canvas behind rows whose background is transparent
+const CANVAS = { light: "#ffffff", dark: "#1e1e1e" };
+
+const state = {
+    name: "",
+    templateKey: "light",
+    appearance: "light",
+    scheme: null,
+    base: null
+};
+
+const groupByKey = {};
+const entryByKey = {};
+
+META.forEach(group => {
+    groupByKey[group.key] = group;
+    group.entries.forEach(entry => {
+        entryByKey[group.key + ":" + entry.key] = entry;
+    });
+});
+
+/* ------------------------------ colors ------------------------------ */
+
+const clone = value => JSON.parse(JSON.stringify(value));
+
+const isSystemValue = value => Object.prototype.hasOwnProperty.call(SYSTEM_COLORS, value);
+
+function parseHex(value) {
+    const digits = String(value).replace(/^#/, "").trim();
+
+    if (!/^[0-9a-fA-F]+$/.test(digits)) {
+        return null;
+    }
+    const number = parseInt(digits, 16);
+
+    if (digits.length === 3) {
+        const red = (number >> 8) & 15;
+        const green = (number >> 4) & 15;
+        const blue = number & 15;
+        return { r: red * 17, g: green * 17, b: blue * 17, a: 255 };
+    }
+    if (digits.length === 6) {
+        return { r: (number >> 16) & 255, g: (number >> 8) & 255, b: number & 255, a: 255 };
+    }
+    if (digits.length === 8) {
+        return { r: (number >> 24) & 255, g: (number >> 16) & 255, b: (number >> 8) & 255, a: number & 255 };
+    }
+    return null;
+}
+
+const byte = value => value.toString(16).padStart(2, "0");
+
+function formatHex(rgba) {
+    const base = "#" + byte(rgba.r) + byte(rgba.g) + byte(rgba.b);
+    return rgba.a === 255 ? base : base + byte(rgba.a);
+}
+
+// resolved CSS color, system values follow the previewed appearance
+function cssColor(value) {
+    if (isSystemValue(value)) {
+        return SYSTEM_COLORS[value][state.appearance];
+    }
+    const rgba = parseHex(value);
+
+    return rgba ? "rgba(" + rgba.r + "," + rgba.g + "," + rgba.b + "," + (rgba.a / 255).toFixed(3) + ")" : "transparent";
+}
+
+// input[type=color] only accepts #rrggbb
+function cssColorOpaque(value) {
+    if (isSystemValue(value)) {
+        return SYSTEM_COLORS[value][state.appearance];
+    }
+    const rgba = parseHex(value) || { r: 0, g: 0, b: 0, a: 255 };
+    return "#" + byte(rgba.r) + byte(rgba.g) + byte(rgba.b);
+}
+
+const getValue = (groupKey, entryKey, field) => state.scheme[groupKey][entryKey][field];
+
+const baseValue = (groupKey, entryKey, field) => {
+    const group = state.base[groupKey];
+    return group && group[entryKey] ? group[entryKey][field] : undefined;
+};
+
+const varName = (groupKey, entryKey, field) =>
+    "--" + groupByKey[groupKey].prefix + "-" + entryKey + "-" + (field === "textColor" ? "t" : "b");
+
+/* ------------------------------ preview data ------------------------------ */
+
+const FOLDER_ROWS = [
+    {
+        indent: 0, folder: true,
+        left: { name: "Sources", size: "1,4 MB", date: "06/06/26, 07:54:59", type: "folder" },
+        right: { name: "Sources", size: "1,4 MB", date: "06/06/26, 07:54:59", type: "folder" }
+    },
+    {
+        indent: 1, folder: true,
+        left: { name: "Core", size: "102,79 KB", date: "09/10/25, 05:44:01", type: "folder" },
+        right: { name: "Core", size: "104,10 KB", date: "12/10/25, 11:02:15", type: "folder" }
+    },
+    {
+        indent: 2,
+        left: { name: "CommonPrefs+FileCompare.swift", size: "1,93 KB", date: "24/05/26, 07:07:08", type: "changed" },
+        right: { name: "CommonPrefs+FileCompare.swift", size: "2,04 KB", date: "24/05/26, 07:07:08", type: "changed" }
+    },
+    {
+        indent: 2, selected: true,
+        left: { name: "DocumentWindow.swift", size: "13,72 KB", date: "08/06/26, 06:54:00", type: "old" },
+        right: { name: "DocumentWindow.swift", size: "14,05 KB", date: "11/07/26, 07:41:19", type: "newer" }
+    },
+    {
+        indent: 2,
+        left: { name: "DiffProcessor.swift", size: "8,21 KB", date: "02/06/26, 09:12:44", type: "same" },
+        right: { name: "DiffProcessor.swift", size: "8,21 KB", date: "02/06/26, 09:12:44", type: "same" }
+    },
+    {
+        indent: 1,
+        left: { name: "setup-env.sh", size: "3,8 KB", date: "19/07/26, 06:20:15", type: "orphan" },
+        right: null
+    },
+    {
+        indent: 1,
+        left: null,
+        right: { name: "setup-maintainer-env.sh", size: "1,52 KB", date: "19/07/26, 06:24:53", type: "orphan" }
+    },
+    {
+        indent: 1,
+        left: { name: "report.junit", size: "17,56 KB", date: "14/07/26, 06:37:34", type: "filtered" },
+        right: { name: "report.junit", size: "17,56 KB", date: "14/07/26, 06:37:34", type: "filtered" }
+    },
+    {
+        indent: 1,
+        left: { name: "Info.plist", size: "1,21 KB", date: "24/05/26, 07:07:08", type: "mismatchingTags" },
+        right: { name: "Info.plist", size: "1,21 KB", date: "24/05/26, 07:07:08", type: "mismatchingTags" }
+    },
+    {
+        indent: 1,
+        left: { name: "AppIcon.png", size: "46,31 KB", date: "24/05/26, 07:07:08", type: "mismatchingLabels" },
+        right: { name: "AppIcon.png", size: "46,31 KB", date: "24/05/26, 07:07:08", type: "mismatchingLabels" }
+    }
+];
+
+const FILE_ROWS = [
+    {
+        left: { n: 89, text: "func updateContent(", type: "same" },
+        right: { n: 89, text: "func updateContent(", type: "same" }
+    },
+    {
+        selected: true, separator: true,
+        left: { type: "missing" },
+        right: { n: 90, text: "    _ diffLine: DiffLine,", type: "added" }
+    },
+    {
+        left: { n: 90, text: "    text: String,", type: "same" },
+        right: { n: 91, text: "    text: String,", type: "same" }
+    },
+    {
+        left: { n: 91, text: "    lineEnding: String,", type: "same" },
+        right: { n: 92, text: "    lineEnding: String,", type: "same" }
+    },
+    {
+        separator: true,
+        left: { n: 92, text: "    textColor: NSColor?,", type: "changed", inline: "textColor" },
+        right: { n: 93, text: "    highlightRanges: [Range<Int>]", type: "changed", inline: "highlightRanges" }
+    },
+    {
+        left: { n: 93, text: "    backgroundColor: NSColor?", type: "deleted" },
+        right: { type: "missing" }
+    },
+    {
+        left: { n: 94, text: ") {", type: "same" },
+        right: { n: 94, text: ") {", type: "same" }
+    },
+    {
+        separator: true,
+        left: { n: 95, text: "    string = text + lineEnding", type: "changed", inline: "string" },
+        right: { n: 95, text: "    let textColor = diffLine.colors?.text", type: "changed", inline: "textColor" }
+    },
+    {
+        left: { type: "missing" },
+        right: { n: 96, text: "    let background = diffLine.colors?.background", type: "added" }
+    },
+    {
+        left: { type: "missing" },
+        right: { n: 97, text: "    let content = text + lineEnding", type: "added" }
+    },
+    {
+        separator: true,
+        left: { n: 96, text: "    apply(content)", type: "merged" },
+        right: { n: 98, text: "    apply(content)", type: "merged" }
+    },
+    {
+        left: { n: 97, text: "}", type: "same" },
+        right: { n: 99, text: "}", type: "same" }
+    }
+];
+
+// mini map blocks: percentages of the panel height
+const THUMB_SECTIONS = [
+    { top: 8, height: 9, left: "missing", right: "added" },
+    { top: 33, height: 9, left: "changed", right: "changed" },
+    { top: 42, height: 8, left: "deleted", right: "missing" },
+    { top: 58, height: 25, left: "changed", right: "added" },
+    { top: 83, height: 8, left: "merged", right: "merged" }
+];
+
+const CONSOLE_ROWS = [
+    { key: "info", text: "Reading /Volumes/Devel/Sources — 1.284 items" },
+    { key: "warning", text: "Skipped 3 unreadable files" },
+    { key: "error", text: "Cannot open /Volumes/Devel/Sources/locked.bin" }
+];
+
+/* ------------------------------ editor ------------------------------ */
+
+const $ = (selector, root = document) => root.querySelector(selector);
+
+const swatchElements = {};
+
+const swatchKey = (groupKey, entryKey, field) => groupKey + ":" + entryKey + ":" + field;
+
+function buildEditor() {
+    const host = $("#groups");
+
+    host.textContent = "";
+
+    META.forEach((group, index) => {
+        const details = document.createElement("details");
+
+        details.className = "group";
+        details.open = index < 2;
+        details.dataset.group = group.key;
+
+        const summary = document.createElement("summary");
+
+        summary.innerHTML = "<span>" + group.title + "</span><span class=\"count\">" + group.key + "</span>";
+        details.appendChild(summary);
+
+        group.entries.forEach(entry => {
+            details.appendChild(buildEntryRow(group, entry));
+        });
+
+        host.appendChild(details);
+    });
+}
+
+function buildEntryRow(group, entry) {
+    const row = document.createElement("div");
+
+    row.className = "entry";
+    row.dataset.entry = group.key + ":" + entry.key;
+    row.dataset.search = (entry.label + " " + entry.key + " " + group.title + " " + (entry.hint || "")).toLowerCase();
+
+    const label = document.createElement("div");
+
+    label.className = "entry-label";
+    label.innerHTML =
+        "<b><span class=\"dot\"></span>" + entry.label + "</b>" +
+        "<small><code>" + entry.key + "</code>" + (entry.hint ? " · " + entry.hint : "") + "</small>";
+    row.appendChild(label);
+
+    entry.fields.forEach(field => {
+        row.appendChild(buildSwatch(group, entry, field));
+    });
+
+    row.addEventListener("mouseenter", () => highlightPreview(group.key, entry.key, true));
+    row.addEventListener("mouseleave", () => highlightPreview(group.key, entry.key, false));
+
+    return row;
+}
+
+function buildSwatch(group, entry, field) {
+    const button = document.createElement("button");
+    const unused = (field === "textColor" && entry.use === "bg") ||
+        (field === "backgroundColor" && entry.use === "text");
+
+    button.type = "button";
+    button.className = "swatch" + (unused ? " unused" : "");
+    button.dataset.group = group.key;
+    button.dataset.entryKey = entry.key;
+    button.dataset.field = field;
+    button.dataset.note = unused ? "kept in the JSON but not used by the app" : entry.label;
+    button.innerHTML =
+        "<span class=\"chip\"></span>" +
+        "<span class=\"swatch-meta\"><span>" + (field === "textColor" ? "Text" : "Background") + "</span><b></b></span>";
+
+    button.addEventListener("click", event => {
+        event.stopPropagation();
+        openPopover(button);
+    });
+
+    swatchElements[swatchKey(group.key, entry.key, field)] = button;
+
+    return button;
+}
+
+function updateSwatch(groupKey, entryKey, field) {
+    const button = swatchElements[swatchKey(groupKey, entryKey, field)];
+
+    if (!button) {
+        return;
+    }
+    const value = getValue(groupKey, entryKey, field);
+
+    $(".chip", button).style.setProperty("--chip-color", cssColor(value));
+    $(".swatch-meta b", button).textContent = isSystemValue(value) ? "system" : value;
+    button.title = value + " — " + button.dataset.note;
+
+    const row = $(".entry[data-entry=\"" + groupKey + ":" + entryKey + "\"]");
+    const entry = entryByKey[groupKey + ":" + entryKey];
+    const modified = entry.fields.some(name => getValue(groupKey, entryKey, name) !== baseValue(groupKey, entryKey, name));
+
+    row.classList.toggle("modified", modified);
+}
+
+function updateAllSwatches() {
+    META.forEach(group => {
+        group.entries.forEach(entry => {
+            entry.fields.forEach(field => updateSwatch(group.key, entry.key, field));
+        });
+    });
+}
+
+/* ------------------------------ css variables ------------------------------ */
+
+function applyVar(groupKey, entryKey, field) {
+    const root = $("#previewRoot");
+
+    root.style.setProperty(varName(groupKey, entryKey, field), cssColor(getValue(groupKey, entryKey, field)));
+}
+
+function applyAllVars() {
+    const root = $("#previewRoot");
+
+    root.style.setProperty("--canvas", CANVAS[state.appearance]);
+    META.forEach(group => {
+        group.entries.forEach(entry => {
+            entry.fields.forEach(field => applyVar(group.key, entry.key, field));
+        });
+    });
+}
+
+/* ------------------------------ previews ------------------------------ */
+
+const INDENT_STEP = 14;
+
+function tag(groupKey, entryKey) {
+    return " data-c=\"" + groupKey + ":" + entryKey + "\"";
+}
+
+function colorVar(groupKey, entryKey, field) {
+    return "var(" + varName(groupKey, entryKey, field) + ")";
+}
+
+function buildFolderPreview() {
+    const host = $("#folderPanels");
+
+    host.textContent = "";
+    ["left", "right"].forEach(side => {
+        const panel = document.createElement("div");
+
+        panel.className = "preview";
+        panel.innerHTML =
+            "<div class=\"fd-head\"><span>Name</span><span>Size</span><span>Date Modified</span></div>" +
+            FOLDER_ROWS.map(row => folderRowMarkup(row, side)).join("");
+        host.appendChild(panel);
+    });
+}
+
+function folderRowMarkup(row, side) {
+    const item = row[side];
+    const indent = "padding-left:" + (4 + row.indent * INDENT_STEP) + "px";
+
+    if (!item) {
+        return "<div class=\"fd-row\"><span style=\"" + indent + "\"></span><span></span><span></span></div>";
+    }
+
+    const nameColor = colorVar("folderColorsMap", item.type, "textColor");
+    const sizeKey = row.folder ? "subFoldersSize" : item.type;
+    const sizeColor = colorVar("folderColorsMap", sizeKey, "textColor");
+    let background = "transparent";
+
+    if (row.selected) {
+        background = colorVar("folderColorsMap", "selectedRow", "backgroundColor");
+    } else if (!row.folder) {
+        background = colorVar("folderColorsMap", item.type, "backgroundColor");
+    }
+
+    const rowTag = row.selected ? tag("folderColorsMap", "selectedRow") : (row.folder ? "" : tag("folderColorsMap", item.type));
+
+    return "<div class=\"fd-row\" style=\"background:" + background + "\"" + rowTag + ">" +
+        "<span class=\"c-name\" style=\"" + indent + ";color:" + nameColor + "\"" + tag("folderColorsMap", item.type) + ">" + item.name + "</span>" +
+        "<span class=\"c-size\" style=\"color:" + sizeColor + "\"" + tag("folderColorsMap", sizeKey) + ">" + item.size + "</span>" +
+        "<span class=\"c-date\" style=\"color:" + nameColor + "\"" + tag("folderColorsMap", item.type) + ">" + item.date + "</span>" +
+        "</div>";
+}
+
+function buildFilePreview() {
+    const host = $("#filePanels");
+
+    host.textContent = "";
+
+    const left = document.createElement("div");
+
+    left.className = "preview";
+    left.innerHTML = FILE_ROWS.map(row => fileRowMarkup(row, "left")).join("");
+    host.appendChild(left);
+
+    host.appendChild(buildThumbnail());
+
+    const right = document.createElement("div");
+
+    right.className = "preview";
+    right.innerHTML = FILE_ROWS.map(row => fileRowMarkup(row, "right")).join("");
+    host.appendChild(right);
+}
+
+function escapeText(text) {
+    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function codeContent(item) {
+    const text = item.text || "";
+
+    if (!item.inline) {
+        return escapeText(text);
+    }
+    const start = text.indexOf(item.inline);
+
+    if (start < 0) {
+        return escapeText(text);
+    }
+    const inlineStyle = "color:" + colorVar("fileColorsMap", "changedInline", "textColor") +
+        ";background:" + colorVar("fileColorsMap", "changedInline", "backgroundColor");
+
+    return escapeText(text.slice(0, start)) +
+        "<span class=\"inline\" style=\"" + inlineStyle + "\"" + tag("fileColorsMap", "changedInline") + ">" +
+        escapeText(item.inline) + "</span>" +
+        escapeText(text.slice(start + item.inline.length));
+}
+
+function fileRowMarkup(row, side) {
+    const item = row[side];
+    const isMissing = item.type === "missing";
+    const textColor = colorVar("fileColorsMap", item.type, "textColor");
+    const gutterBackground = row.selected
+        ? colorVar("fileColorsMap", "selectedRow", "backgroundColor")
+        : "transparent";
+    let background = row.selected
+        ? colorVar("fileColorsMap", "selectedRow", "backgroundColor")
+        : colorVar("fileColorsMap", item.type, "backgroundColor");
+
+    if (isMissing && !row.selected) {
+        background = "transparent";
+    }
+
+    // when the row is selected the line number switches to the status text color
+    const numberColor = row.selected ? textColor : colorVar("fileColorsMap", "lineNumber", "textColor");
+    const separatorLine = row.separator
+        ? "<span class=\"secsep\" style=\"background:" + colorVar("fileColorsMap", "sectionSeparatorLine", "textColor") + "\"" +
+          tag("fileColorsMap", "sectionSeparatorLine") + "></span>"
+        : "";
+
+    return "<div class=\"fl-row\">" + separatorLine +
+        "<span class=\"ln\" style=\"color:" + numberColor + ";background:" + gutterBackground + "\"" +
+        tag("fileColorsMap", row.selected ? "selectedRow" : "lineNumber") + ">" + (item.n || "") + "</span>" +
+        "<span class=\"gsep\" style=\"background:" + colorVar("fileColorsMap", "lineNumberSeparator", "textColor") + "\"" +
+        tag("fileColorsMap", "lineNumberSeparator") + "></span>" +
+        "<span class=\"code" + (isMissing ? " missing" : "") + "\" style=\"color:" + textColor +
+        ";background-color:" + background + "\"" + tag("fileColorsMap", row.selected ? "selectedRow" : item.type) + ">" +
+        (isMissing ? "" : codeContent(item)) + "</span>" +
+        "</div>";
+}
+
+function buildThumbnail() {
+    const thumb = document.createElement("div");
+
+    thumb.className = "thumb";
+    thumb.style.background = colorVar("fileColorsMap", "thumbnail", "backgroundColor");
+    thumb.setAttribute("data-c", "fileColorsMap:thumbnail");
+    thumb.innerHTML =
+        THUMB_SECTIONS.map(section =>
+            "<div class=\"tsec\" style=\"top:" + section.top + "%;height:" + section.height + "%\">" +
+            "<i style=\"background:" + colorVar("fileColorsMap", section.left, "textColor") + "\"></i>" +
+            "<i style=\"background:" + colorVar("fileColorsMap", section.right, "textColor") + "\"></i>" +
+            "</div>").join("") +
+        "<div class=\"posbox\" style=\"top:26%;height:34%;border-color:" +
+        colorVar("fileColorsMap", "positionBox", "backgroundColor") + "\" data-c=\"fileColorsMap:positionBox\"></div>";
+
+    return thumb;
+}
+
+function buildConsolePreview() {
+    $("#consolePreview").innerHTML = CONSOLE_ROWS.map(row =>
+        "<div style=\"color:" + colorVar("consoleLogColorsMap", row.key, "textColor") +
+        ";background:" + colorVar("consoleLogColorsMap", row.key, "backgroundColor") + "\"" +
+        tag("consoleLogColorsMap", row.key) + ">" + escapeText(row.text) + "</div>").join("");
+}
+
+function buildPreviews() {
+    buildFolderPreview();
+    buildFilePreview();
+    buildConsolePreview();
+    applyAllVars();
+}
+
+/* ------------------------------ linking ------------------------------ */
+
+function highlightPreview(groupKey, entryKey, on) {
+    document.querySelectorAll("[data-c=\"" + groupKey + ":" + entryKey + "\"]").forEach(node => {
+        node.classList.toggle("hl", on);
+    });
+}
+
+function revealEntry(groupKey, entryKey) {
+    const details = $(".group[data-group=\"" + groupKey + "\"]");
+    const row = $(".entry[data-entry=\"" + groupKey + ":" + entryKey + "\"]");
+
+    details.open = true;
+    row.scrollIntoView({ block: "center", behavior: "smooth" });
+    row.classList.remove("pulse");
+    void row.offsetWidth;
+    row.classList.add("pulse");
+}
+
+$("#previewRoot").addEventListener("click", event => {
+    const target = event.target.closest("[data-c]");
+
+    if (!target) {
+        return;
+    }
+    const parts = target.dataset.c.split(":");
+
+    revealEntry(parts[0], parts[1]);
+});
+
+/* ------------------------------ popover ------------------------------ */
+
+const popover = $("#popover");
+let activeSwatch = null;
+
+function popoverContext() {
+    return {
+        groupKey: activeSwatch.dataset.group,
+        entryKey: activeSwatch.dataset.entryKey,
+        field: activeSwatch.dataset.field
+    };
+}
+
+function openPopover(button) {
+    if (activeSwatch) {
+        activeSwatch.classList.remove("active");
+    }
+    activeSwatch = button;
+    button.classList.add("active");
+    popover.hidden = false;
+    syncPopover();
+    placePopover(button);
+}
+
+function closePopover() {
+    if (activeSwatch) {
+        activeSwatch.classList.remove("active");
+        activeSwatch = null;
+    }
+    popover.hidden = true;
+}
+
+function placePopover(button) {
+    const rect = button.getBoundingClientRect();
+    const width = popover.offsetWidth;
+    const height = popover.offsetHeight;
+    let left = rect.right + 10;
+    let top = rect.top - 8;
+
+    if (left + width > window.innerWidth - 10) {
+        left = Math.max(10, rect.left - width - 10);
+    }
+    if (top + height > window.innerHeight - 10) {
+        top = Math.max(10, window.innerHeight - height - 10);
+    }
+    popover.style.left = left + "px";
+    popover.style.top = top + "px";
+}
+
+function syncPopover() {
+    const context = popoverContext();
+    const entry = entryByKey[context.groupKey + ":" + context.entryKey];
+    const value = getValue(context.groupKey, context.entryKey, context.field);
+    const rgba = parseHex(value) || { r: 0, g: 0, b: 0, a: 255 };
+    const system = isSystemValue(value);
+
+    $("#pvTitle").textContent = groupByKey[context.groupKey].title + " · " + entry.label;
+    $("#pvSub").textContent = (context.field === "textColor" ? "Text color" : "Background color") +
+        " · " + context.entryKey + "." + context.field;
+
+    $("#pvColor").value = cssColorOpaque(value);
+    $("#pvAlpha").value = system ? 255 : rgba.a;
+    $("#pvAlphaNum").value = system ? 255 : rgba.a;
+    $("#pvAlpha").disabled = system;
+    $("#pvAlphaNum").disabled = system;
+    // rewriting the field while it is being typed in would move the caret
+    if (document.activeElement !== $("#pvHex")) {
+        $("#pvHex").value = value;
+        $("#pvHex").classList.remove("bad");
+    }
+
+    popover.querySelectorAll("[data-special]").forEach(button => {
+        const special = button.dataset.special;
+        const pressed = special === "transparent" ? (!system && rgba.a === 0) : special === value;
+
+        button.setAttribute("aria-pressed", pressed ? "true" : "false");
+    });
+
+    buildPalette();
+}
+
+function buildPalette() {
+    const host = $("#pvPalette");
+    const seen = [];
+
+    META.forEach(group => {
+        group.entries.forEach(entry => {
+            entry.fields.forEach(field => {
+                const value = getValue(group.key, entry.key, field);
+                const rgba = parseHex(value);
+
+                if (!isSystemValue(value) && rgba && rgba.a > 0 && seen.indexOf(value) < 0) {
+                    seen.push(value);
+                }
+            });
+        });
+    });
+
+    host.textContent = "";
+    seen.slice(0, 26).forEach(value => {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.title = value;
+        button.style.background = cssColor(value);
+        button.addEventListener("click", () => setActiveValue(value));
+        host.appendChild(button);
+    });
+}
+
+function setActiveValue(value) {
+    const context = popoverContext();
+
+    state.scheme[context.groupKey][context.entryKey][context.field] = value;
+    applyVar(context.groupKey, context.entryKey, context.field);
+    updateSwatch(context.groupKey, context.entryKey, context.field);
+    updateJson();
+    syncPopover();
+}
+
+function currentAlpha() {
+    const context = popoverContext();
+    const value = getValue(context.groupKey, context.entryKey, context.field);
+    const rgba = parseHex(value);
+
+    return rgba ? rgba.a : 255;
+}
+
+$("#pvColor").addEventListener("input", event => {
+    const rgba = parseHex(event.target.value);
+
+    rgba.a = currentAlpha();
+    setActiveValue(formatHex(rgba));
+});
+
+function applyAlpha(alpha) {
+    const context = popoverContext();
+    const value = getValue(context.groupKey, context.entryKey, context.field);
+    const rgba = parseHex(value) || parseHex(cssColorOpaque(value));
+
+    rgba.a = Math.max(0, Math.min(255, Number(alpha) || 0));
+    setActiveValue(formatHex(rgba));
+}
+
+$("#pvAlpha").addEventListener("input", event => applyAlpha(event.target.value));
+$("#pvAlphaNum").addEventListener("change", event => applyAlpha(event.target.value));
+
+$("#pvHex").addEventListener("input", event => {
+    const raw = event.target.value.trim();
+
+    if (isSystemValue(raw) || parseHex(raw)) {
+        event.target.classList.remove("bad");
+        setActiveValue(isSystemValue(raw) ? raw : (raw.startsWith("#") ? raw : "#" + raw));
+    } else {
+        event.target.classList.add("bad");
+    }
+});
+
+popover.querySelectorAll("[data-special]").forEach(button => {
+    button.addEventListener("click", () => {
+        const special = button.dataset.special;
+
+        if (special === "transparent") {
+            const context = popoverContext();
+            const value = getValue(context.groupKey, context.entryKey, context.field);
+            const rgba = parseHex(value) || parseHex(cssColorOpaque(value));
+
+            rgba.a = 0;
+            setActiveValue(formatHex(rgba));
+        } else {
+            setActiveValue(special);
+        }
+    });
+});
+
+$("#pvReset").addEventListener("click", () => {
+    const context = popoverContext();
+    const value = baseValue(context.groupKey, context.entryKey, context.field);
+
+    if (value !== undefined) {
+        setActiveValue(value);
+    }
+});
+
+$("#pvClose").addEventListener("click", closePopover);
+
+document.addEventListener("click", event => {
+    if (!popover.hidden && !popover.contains(event.target) && !event.target.closest(".swatch")) {
+        closePopover();
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        closePopover();
+    }
+});
+
+window.addEventListener("resize", () => {
+    if (activeSwatch) {
+        placePopover(activeSwatch);
+    }
+});
+
+/* ------------------------------ json ------------------------------ */
+
+function buildJson() {
+    const output = {};
+
+    EXPORT_ORDER.forEach(groupKey => {
+        const group = groupByKey[groupKey];
+
+        output[groupKey] = {};
+        group.entries.forEach(entry => {
+            const values = {};
+
+            entry.fields.forEach(field => {
+                values[field] = getValue(groupKey, entry.key, field);
+            });
+            output[groupKey][entry.key] = values;
+        });
+    });
+
+    return JSON.stringify(output, null, 4) + "\n";
+}
+
+function updateJson() {
+    $("#jsonOut").textContent = buildJson();
+}
+
+function slugify(name) {
+    const slug = name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+    return slug || "colors";
+}
+
+function download() {
+    const blob = new Blob([buildJson()], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = slugify(state.name) + ".json";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+}
+
+/* ------------------------------ scheme handling ------------------------------ */
+
+function isModified() {
+    return META.some(group => group.entries.some(entry =>
+        entry.fields.some(field => getValue(group.key, entry.key, field) !== baseValue(group.key, entry.key, field))));
+}
+
+function loadTemplate(templateKey, schemeName) {
+    const template = TEMPLATES[templateKey];
+
+    state.templateKey = templateKey;
+    state.scheme = clone(template.data);
+    state.base = clone(template.data);
+    state.appearance = template.appearance;
+    state.name = schemeName || ("My " + (templateKey === "dark" ? "Dark" : "Light") + " Scheme");
+
+    refreshAll();
+}
+
+function refreshAll() {
+    $("#schemeName").value = state.name;
+    $("#templateSelect").value = state.templateKey;
+    updateAppearanceSeg();
+    updateAllSwatches();
+    buildPreviews();
+    updateJson();
+}
+
+function updateAppearanceSeg() {
+    $("#appearanceSeg").querySelectorAll("button").forEach(button => {
+        button.setAttribute("aria-pressed", button.dataset.appearance === state.appearance ? "true" : "false");
+    });
+}
+
+/* ------------------------------ wiring ------------------------------ */
+
+const templateSelect = $("#templateSelect");
+
+Object.keys(TEMPLATES).forEach(key => {
+    const option = document.createElement("option");
+
+    option.value = key;
+    option.textContent = TEMPLATES[key].label;
+    templateSelect.appendChild(option);
+});
+
+$("#newScheme").addEventListener("click", () => {
+    if (isModified() && !window.confirm("Create a new scheme from the selected template? The current changes will be lost.")) {
+        return;
+    }
+    closePopover();
+    loadTemplate(templateSelect.value);
+});
+
+templateSelect.addEventListener("change", () => {
+    if (!isModified()) {
+        loadTemplate(templateSelect.value);
+    }
+});
+
+$("#schemeName").addEventListener("input", event => {
+    state.name = event.target.value;
+});
+
+$("#appearanceSeg").addEventListener("click", event => {
+    const button = event.target.closest("button[data-appearance]");
+
+    if (!button) {
+        return;
+    }
+    state.appearance = button.dataset.appearance;
+    updateAppearanceSeg();
+    applyAllVars();
+    updateAllSwatches();
+    if (activeSwatch) {
+        syncPopover();
+    }
+});
+
+$("#resetAll").addEventListener("click", () => {
+    if (!isModified() || window.confirm("Discard all changes and go back to the template values?")) {
+        closePopover();
+        loadTemplate(state.templateKey, state.name);
+    }
+});
+
+$("#filter").addEventListener("input", event => {
+    const needle = event.target.value.trim().toLowerCase();
+
+    META.forEach(group => {
+        const details = $(".group[data-group=\"" + group.key + "\"]");
+        let visible = 0;
+
+        details.querySelectorAll(".entry").forEach(row => {
+            const matches = !needle || row.dataset.search.indexOf(needle) >= 0;
+
+            row.hidden = !matches;
+            visible += matches ? 1 : 0;
+        });
+        details.hidden = visible === 0;
+        if (needle && visible > 0) {
+            details.open = true;
+        }
+    });
+});
+
+$("#exportBtn").addEventListener("click", download);
+$("#exportBtn2").addEventListener("click", download);
+
+$("#copyJson").addEventListener("click", async () => {
+    const button = $("#copyJson");
+
+    await navigator.clipboard.writeText(buildJson());
+    button.textContent = "Copied";
+    window.setTimeout(() => {
+        button.textContent = "Copy to clipboard";
+    }, 1400);
+});
+
+$("#importBtn").addEventListener("click", () => $("#importFile").click());
+
+$("#importFile").addEventListener("change", async event => {
+    const file = event.target.files && event.target.files[0];
+
+    if (!file) {
+        return;
+    }
+    try {
+        const imported = JSON.parse(await file.text());
+
+        // missing entries keep the current template value so the editor stays complete
+        META.forEach(group => {
+            group.entries.forEach(entry => {
+                entry.fields.forEach(field => {
+                    const value = imported[group.key] && imported[group.key][entry.key]
+                        ? imported[group.key][entry.key][field]
+                        : undefined;
+
+                    if (typeof value === "string") {
+                        state.scheme[group.key][entry.key][field] = value;
+                    }
+                });
+            });
+        });
+        state.name = file.name.replace(/\.json$/i, "");
+        refreshAll();
+    } catch (error) {
+        window.alert("Cannot read the scheme: " + error.message);
+    }
+    event.target.value = "";
+});
+
+buildEditor();
+loadTemplate("light");
+</script>
+</body>
+</html>

@@ -115,11 +115,11 @@ Click any row in the **Example** column to copy the full command to the clipboar
     </table>
 </div>
 
-# [How to Use a Custom Color Scheme](#install_theme)
+# [How to Use a Custom Color Scheme](#how_to_use_a_custom_color_scheme)
 
 **Installation**
 
-Use the [Color Scheme Editor](https://visualdiffer.com/colors.html) to create a custom color scheme, then download the JSON file. For example, save the file as `~/Downloads/my-scheme.json`.
+Use the <a href="colors.html" target="_blank" rel="noopener" aria-label="Color Scheme Editor (opens in a new tab)">Color Scheme Editor</a> to create a custom color scheme, then download the JSON file. For example, save the file as `~/Downloads/my-scheme.json`.
 
 Open Terminal and run the following commands.
 

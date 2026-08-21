@@ -30,6 +30,7 @@ Integration & Settings
 Extra Features
 ==============
 
+* [Color Scheme Editor](colors.html)
 * [visdiff — Command-Line Tool](unixshell.html)
 * [Hidden Settings](hiddenSettings.html)
 * [Frequently Asked Questions](faq.html)
