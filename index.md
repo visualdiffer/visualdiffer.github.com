@@ -35,3 +35,8 @@ Extra Features
 * [Hidden Settings](hiddenSettings.html)
 * [Frequently Asked Questions](faq.html)
 * [Integrate with macOS Finder context menu](finder.html)
+
+Installation
+============
+
+* [How to Install a Pre-Release](prerelease.html)
